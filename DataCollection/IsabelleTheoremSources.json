@@ -1,0 +1,690 @@
+[
+    {
+        "theorem_number": "1",
+        "sources": [
+            {
+                "link": "https://github.com/isabelle-prover/mirror-isabelle/blob/master/src/HOL/Examples/Sqrt.thy"
+            }
+        ]
+    },
+    {
+        "theorem_number": "2",
+        "sources": [
+            {
+                "link": "https://github.com/isabelle-prover/mirror-isabelle/blob/master/src/HOL/Computational_Algebra/Fundamental_Theorem_Algebra.thy"
+            }
+        ]
+    },
+    {
+        "theorem_number": "3",
+        "sources": [
+            {
+                "link": "https://github.com/isabelle-prover/mirror-isabelle/blob/master/src/HOL/Library/Countable.thy"
+            }
+        ]
+    },
+    {
+        "theorem_number": "5",
+        "sources": [
+            {
+                "link": "https://www.isa-afp.org/entries/Prime_Number_Theorem.html#"
+            }
+        ]
+    },
+    {
+        "theorem_number": "6",
+        "sources": [
+            {
+                "link": "https://www.isa-afp.org/entries/Incompleteness.html"
+            }
+        ]
+    },
+    {
+        "theorem_number": "8",
+        "sources": [
+            {
+                "link": "https://www.isa-afp.org/entries/Impossible_Geometry.html"
+            }
+        ]
+    },
+    {
+        "theorem_number": "9",
+        "sources": [
+            {
+                "link": "https://github.com/isabelle-prover/mirror-isabelle/blob/master/src/HOL/Analysis/Ball_Volume.thy"
+            }
+        ]
+    },
+    {
+        "theorem_number": "10",
+        "sources": [
+            {
+                "link": "https://github.com/isabelle-prover/mirror-isabelle/blob/master/src/HOL/Number_Theory/Residues.thy"
+            }
+        ]
+    },
+    {
+        "theorem_number": "11",
+        "sources": [
+            {
+                "link": "https://github.com/isabelle-prover/mirror-isabelle/blob/master/src/HOL/Computational_Algebra/Primes.thy"
+            }
+        ]
+    },
+    {
+        "theorem_number": "12",
+        "sources": [
+            {
+                "link": "https://www.isa-afp.org/entries/Tarskis_Geometry.html"
+            }
+        ]
+    },
+    {
+        "theorem_number": "14",
+        "sources": [
+            {
+                "link": "https://github.com/isabelle-prover/mirror-isabelle/blob/master/src/HOL/Analysis/Gamma_Function.thy"
+            }
+        ]
+    },
+    {
+        "theorem_number": "15",
+        "sources": [
+            {
+                "link": "https://github.com/isabelle-prover/mirror-isabelle/blob/e46f66edc1df7dd1239145fb6d6786d4f2fa6079/src/HOL/Analysis/Henstock_Kurzweil_Integration.thy"
+            }
+        ]
+    },
+    {
+        "theorem_number": "17",
+        "sources": [
+            {
+                "link": "https://github.com/isabelle-prover/mirror-isabelle/blob/b147405a69b31e2bf8f739f289bca7a6609e35a4/src/HOL/Complex.thy"
+            }
+        ]
+    },
+    {
+        "theorem_number": "18",
+        "sources": [
+            {
+                "link": "https://www.isa-afp.org/entries/Liouville_Numbers.html"
+            }
+        ]
+    },
+    {
+        "theorem_number": "19",
+        "sources": [
+            {
+                "link": "https://www.isa-afp.org/entries/SumSquares.html"
+            }
+        ]
+    },
+    {
+        "theorem_number": "20",
+        "sources": [
+            {
+                "link": "https://www.isa-afp.org/entries/SumSquares.html"
+            }
+        ]
+    },
+    {
+        "theorem_number": "21",
+        "sources": [
+            {
+                "link": "https://www.isa-afp.org/entries/Green.html"
+            }
+        ]
+    },
+    {
+        "theorem_number": "22",
+        "sources": [
+            {
+                "link": "https://github.com/isabelle-prover/mirror-isabelle/blob/e47bededa73774a0362e03dab3f48c77e720ce37/src/HOL/Analysis/Continuum_Not_Denumerable.thy"
+            }
+        ]
+    },
+    {
+        "theorem_number": "23",
+        "sources": [
+            {
+                "link": "https://www.isa-afp.org/entries/Fermat3_4.html"
+            }
+        ]
+    },
+    {
+        "theorem_number": "24",
+        "sources": [
+            {
+                "link": "https://www.isa-afp.org/entries/Independence_CH.html"
+            }
+        ]
+    },
+    {
+        "theorem_number": "25",
+        "sources": [
+            {
+                "link": "https://github.com/isabelle-prover/mirror-isabelle/blob/bc5f7db372c39050614ffc97da69316438aa81c7/src/HOL/Inductive.thy"
+            }
+        ]
+    },
+    {
+        "theorem_number": "",
+        "sources": [
+            {
+                "link": "https://github.com/isabelle-prover/mirror-isabelle/blob/bc5f7db372c39050614ffc97da69316438aa81c7/src/HOL/ex/Set_Theory.thy"
+            }
+        ]
+    },
+    {
+        "theorem_number": "26",
+        "sources": [
+            {
+                "link": "https://github.com/isabelle-prover/mirror-isabelle/blob/e46f66edc1df7dd1239145fb6d6786d4f2fa6079/src/HOL/Transcendental.thy"
+            }
+        ]
+    },
+    {
+        "theorem_number": "27",
+        "sources": [
+            {
+                "link": "https://www.isa-afp.org/entries/Triangle.html"
+            }
+        ]
+    },
+    {
+        "theorem_number": "30",
+        "sources": [
+            {
+                "link": "https://github.com/isabelle-prover/mirror-isabelle/blob/bc5f7db372c39050614ffc97da69316438aa81c7/src/HOL/ex/Ballot.thy"
+            }
+        ]
+    },
+    {
+        "theorem_number": "31",
+        "sources": [
+            {
+                "link": "https://www.isa-afp.org/entries/Ramsey-Infinite.html"
+            }
+        ]
+    },
+    {
+        "theorem_number": "34",
+        "sources": [
+            {
+                "link": "https://github.com/isabelle-prover/mirror-isabelle/blob/bcd3fab402f4b0151dfa21388e6939651f02f292/src/HOL/Analysis/Summation_Tests.thy"
+            }
+        ]
+    },
+    {
+        "theorem_number": "35",
+        "sources": [
+            {
+                "link": "https://github.com/isabelle-prover/mirror-isabelle/blob/2a8730fef6686b851d218caa16462295ade81aa4/src/HOL/MacLaurin.thy"
+            }
+        ]
+    },
+    {
+        "theorem_number": "36",
+        "sources": [
+            {
+                "link": "https://github.com/isabelle-prover/mirror-isabelle/blob/b795441726342f2745c13866debeaf3b3ee2d3c1/src/HOL/Analysis/Brouwer_Fixpoint.thy"
+            }
+        ]
+    },
+    {
+        "theorem_number": "37",
+        "sources": [
+            {
+                "link": "https://github.com/isabelle-prover/mirror-isabelle/blob/bc5f7db372c39050614ffc97da69316438aa81c7/src/HOL/ex/Cubic_Quartic.thy"
+            }
+        ]
+    },
+    {
+        "theorem_number": "38",
+        "sources": [
+            {
+                "link": "https://www.isa-afp.org/entries/Cauchy.html"
+            }
+        ]
+    },
+    {
+        "theorem_number": "39",
+        "sources": [
+            {
+                "link": "https://www.isa-afp.org/entries/Pell.html"
+            }
+        ]
+    },
+    {
+        "theorem_number": "40",
+        "sources": [
+            {
+                "link": "https://www.isa-afp.org/entries/Minkowskis_Theorem.html"
+            }
+        ]
+    },
+    {
+        "theorem_number": "41",
+        "sources": [
+            {
+                "link": "https://www.isa-afp.org/entries/Formal_Puiseux_Series.html"
+            }
+        ]
+    },
+    {
+        "theorem_number": "42",
+        "sources": [
+            {
+                "link": "https://github.com/isabelle-prover/mirror-isabelle/blob/bc5f7db372c39050614ffc97da69316438aa81c7/src/HOL/ex/Triangular_Numbers.thy"
+            }
+        ]
+    },
+    {
+        "theorem_number": "44",
+        "sources": [
+            {
+                "link": "https://github.com/isabelle-prover/mirror-isabelle/blob/32f9b52fc87a8745a5442f508d15e669c2f19301/src/HOL/Binomial.thy"
+            }
+        ]
+    },
+    {
+        "theorem_number": "45",
+        "sources": [
+            {
+                "link": "https://www.isa-afp.org/entries/Euler_Partition.html"
+            }
+        ]
+    },
+    {
+        "theorem_number": "46",
+        "sources": [
+            {
+                "link": "https://github.com/isabelle-prover/mirror-isabelle/blob/bc5f7db372c39050614ffc97da69316438aa81c7/src/HOL/ex/Cubic_Quartic.thy"
+            }
+        ]
+    },
+    {
+        "theorem_number": "47",
+        "sources": [
+            {
+                "link": "https://github.com/isabelle-prover/mirror-isabelle/blob/bc5f7db372c39050614ffc97da69316438aa81c7/src/HOL/Probability/Central_Limit_Theorem.thy"
+            }
+        ]
+    },
+    {
+        "theorem_number": "48",
+        "sources": [
+            {
+                "link": "https://www.isa-afp.org/entries/Dirichlet_L.html"
+            }
+        ]
+    },
+    {
+        "theorem_number": "49",
+        "sources": [
+            {
+                "link": "https://www.isa-afp.org/entries/Cayley_Hamilton.html"
+            }
+        ]
+    },
+    {
+        "theorem_number": "51",
+        "sources": [
+            {
+                "link": "https://github.com/isabelle-prover/mirror-isabelle/blob/8989934459b806827fe36538c6e0c03f9efd6332/src/HOL/Number_Theory/Residues.thy"
+            }
+        ]
+    },
+    {
+        "theorem_number": "52",
+        "sources": [
+            {
+                "link": "https://github.com/isabelle-prover/mirror-isabelle/blob/32f9b52fc87a8745a5442f508d15e669c2f19301/src/HOL/Power.thy"
+            }
+        ]
+    },
+    {
+        "theorem_number": "53",
+        "sources": [
+            {
+                "link": "https://www.isa-afp.org/entries/Pi_Transcendental.html"
+            }
+        ]
+    },
+    {
+        "theorem_number": "54",
+        "sources": [
+            {
+                "link": "https://www.isa-afp.org/entries/Koenigsberg_Friendship.html"
+            }
+        ]
+    },
+    {
+        "theorem_number": "55",
+        "sources": [
+            {
+                "link": "https://www.isa-afp.org/entries/Chord_Segments.html"
+            }
+        ]
+    },
+    {
+        "theorem_number": "56",
+        "sources": [
+            {
+                "link": "https://www.isa-afp.org/entries/Hermite_Lindemann.html"
+            }
+        ]
+    },
+    {
+        "theorem_number": "57",
+        "sources": [
+            {
+                "link": "https://github.com/isabelle-prover/mirror-isabelle/blob/f7b5d1cab35cb9d8ede4df56183d9106b06bc723/src/HOL/Analysis/Simplex_Content.thy"
+            }
+        ]
+    },
+    {
+        "theorem_number": "58",
+        "sources": [
+            {
+                "link": "https://github.com/isabelle-prover/mirror-isabelle/blob/32f9b52fc87a8745a5442f508d15e669c2f19301/src/HOL/Binomial.thy"
+            }
+        ]
+    },
+    {
+        "theorem_number": "59",
+        "sources": [
+            {
+                "link": "https://www.isa-afp.org/entries/Laws_of_Large_Numbers.html"
+            }
+        ]
+    },
+    {
+        "theorem_number": "60",
+        "sources": [
+            {
+                "link": "https://github.com/isabelle-prover/mirror-isabelle/blob/bc5f7db372c39050614ffc97da69316438aa81c7/src/HOL/Computational_Algebra/Primes.thy"
+            }
+        ]
+    },
+    {
+        "theorem_number": "63",
+        "sources": [
+            {
+                "link": "https://github.com/isabelle-prover/mirror-isabelle/blob/32f9b52fc87a8745a5442f508d15e669c2f19301/src/HOL/Set.thy"
+            }
+        ]
+    },
+    {
+        "theorem_number": "64",
+        "sources": [
+            {
+                "link": "https://github.com/isabelle-prover/mirror-isabelle/blob/415d9d8e594d8df04f150d24e3f4a201fbc92643/src/HOL/Deriv.thy"
+            }
+        ]
+    },
+    {
+        "theorem_number": "65",
+        "sources": [
+            {
+                "link": "https://www.isa-afp.org/entries/Triangle.html"
+            }
+        ]
+    },
+    {
+        "theorem_number": "66",
+        "sources": [
+            {
+                "link": "https://github.com/isabelle-prover/mirror-isabelle/blob/e46f66edc1df7dd1239145fb6d6786d4f2fa6079/src/HOL/Series.thy"
+            }
+        ]
+    },
+    {
+        "theorem_number": "67",
+        "sources": [
+            {
+                "link": "https://www.isa-afp.org/entries/E_Transcendental.html"
+            }
+        ]
+    },
+    {
+        "theorem_number": "69",
+        "sources": [
+            {
+                "link": "https://github.com/isabelle-prover/mirror-isabelle/blob/bc5f7db372c39050614ffc97da69316438aa81c7/src/HOL/Computational_Algebra/Euclidean_Algorithm.thy"
+            }
+        ]
+    },
+    {
+        "theorem_number": "70",
+        "sources": [
+            {
+                "link": "https://www.isa-afp.org/entries/Perfect-Number-Thm.html"
+            }
+        ]
+    },
+    {
+        "theorem_number": "71",
+        "sources": [
+            {
+                "link": "https://github.com/isabelle-prover/mirror-isabelle/blob/35f7efa2174427d059354a12335bd195931d30b9/src/HOL/Algebra/Coset.thy"
+            }
+        ]
+    },
+    {
+        "theorem_number": "72",
+        "sources": [
+            {
+                "link": "https://github.com/isabelle-prover/mirror-isabelle/blob/77f84d56844e9e7f79fe3c9823ceec7baa4e8ca1/src/HOL/Algebra/Sylow.thy"
+            }
+        ]
+    },
+    {
+        "theorem_number": "73",
+        "sources": [
+            {
+                "link": "https://github.com/isabelle-prover/mirror-isabelle/blob/bc5f7db372c39050614ffc97da69316438aa81c7/src/HOL/ex/Erdoes_Szekeres.thy"
+            }
+        ]
+    },
+    {
+        "theorem_number": "74",
+        "sources": [
+            {
+                "link": "https://github.com/isabelle-prover/mirror-isabelle/blob/9e17dcbf63a7893ff6b9d1d5e333dfbcdffc2b35/src/ZF/Nat.thy"
+            }
+        ]
+    },
+    {
+        "theorem_number": "75",
+        "sources": [
+            {
+                "link": "https://github.com/isabelle-prover/mirror-isabelle/blob/415d9d8e594d8df04f150d24e3f4a201fbc92643/src/HOL/Deriv.thy"
+            }
+        ]
+    },
+    {
+        "theorem_number": "76",
+        "sources": [
+            {
+                "link": "https://www.isa-afp.org/entries/Fourier.html"
+            }
+        ]
+    },
+    {
+        "theorem_number": "77",
+        "sources": [
+            {
+                "link": "https://www.isa-afp.org/entries/Bernoulli.html"
+            }
+        ]
+    },
+    {
+        "theorem_number": "78",
+        "sources": [
+            {
+                "link": "https://github.com/isabelle-prover/mirror-isabelle/blob/bc5f7db372c39050614ffc97da69316438aa81c7/src/HOL/Analysis/Inner_Product.thy"
+            }
+        ]
+    },
+    {
+        "theorem_number": "79",
+        "sources": [
+            {
+                "link": "https://github.com/isabelle-prover/mirror-isabelle/blob/d2999b9b1bc8f9364b185b13e21dffa813d884f4/src/HOL/Topological_Spaces.thy"
+            }
+        ]
+    },
+    {
+        "theorem_number": "80",
+        "sources": [
+            {
+                "link": "https://github.com/isabelle-prover/mirror-isabelle/blob/a0b90cde837a768d7f35255c2d492481dcb65b10/src/HOL/Computational_Algebra/Factorial_Ring.thy"
+            }
+        ]
+    },
+    {
+        "theorem_number": "81",
+        "sources": [
+            {
+                "link": "https://www.isa-afp.org/entries/Prime_Harmonic_Series.html"
+            }
+        ]
+    },
+    {
+        "theorem_number": "83",
+        "sources": [
+            {
+                "link": "https://www.isa-afp.org/entries/Koenigsberg_Friendship.html"
+            }
+        ]
+    },
+    {
+        "theorem_number": "84",
+        "sources": [
+            {
+                "link": "https://www.isa-afp.org/entries/Integration.html"
+            }
+        ]
+    },
+    {
+        "theorem_number": "85",
+        "sources": [
+            {
+                "link": "https://github.com/isabelle-prover/mirror-isabelle/blob/bc5f7db372c39050614ffc97da69316438aa81c7/src/HOL/ex/ThreeDivides.thy"
+            }
+        ]
+    },
+    {
+        "theorem_number": "86",
+        "sources": [
+            {
+                "link": "https://www.isa-afp.org/entries/Integration.html"
+            }
+        ]
+    },
+    {
+        "theorem_number": "87",
+        "sources": [
+            {
+                "link": "https://www.isa-afp.org/entries/Projective_Geometry.html"
+            }
+        ]
+    },
+    {
+        "theorem_number": "88",
+        "sources": [
+            {
+                "link": "https://www.isa-afp.org/entries/Derangements.html"
+            }
+        ]
+    },
+    {
+        "theorem_number": "89",
+        "sources": [
+            {
+                "link": "https://github.com/isabelle-prover/mirror-isabelle/blob/77f84d56844e9e7f79fe3c9823ceec7baa4e8ca1/src/HOL/Algebra/UnivPoly.thy"
+            }
+        ]
+    },
+    {
+        "theorem_number": "90",
+        "sources": [
+            {
+                "link": "https://www.isa-afp.org/entries/Stirling_Formula.html"
+            }
+        ]
+    },
+    {
+        "theorem_number": "91",
+        "sources": [
+            {
+                "link": "https://isabelle.in.tum.de/dist/library/HOL/HOL/Groups.html"
+            }
+        ]
+    },
+    {
+        "theorem_number": "93",
+        "sources": [
+            {
+                "link": "https://github.com/isabelle-prover/mirror-isabelle/blob/bc5f7db372c39050614ffc97da69316438aa81c7/src/HOL/ex/Birthday_Paradox.thy"
+            }
+        ]
+    },
+    {
+        "theorem_number": "94",
+        "sources": [
+            {
+                "link": "https://www.isa-afp.org/entries/Triangle.html"
+            }
+        ]
+    },
+    {
+        "theorem_number": "95",
+        "sources": [
+            {
+                "link": "https://www.isa-afp.org/entries/Ptolemys_Theorem.html"
+            }
+        ]
+    },
+    {
+        "theorem_number": "96",
+        "sources": [
+            {
+                "link": "https://github.com/isabelle-prover/mirror-isabelle/blob/32f9b52fc87a8745a5442f508d15e669c2f19301/src/HOL/Binomial.thy"
+            }
+        ]
+    },
+    {
+        "theorem_number": "97",
+        "sources": [
+            {
+                "link": "https://github.com/isabelle-prover/mirror-isabelle/blob/a2b3e8bf88ca9b9abd1c89f5e93e70b025af89b3/src/HOL/Analysis/Determinants.thy"
+            }
+        ]
+    },
+    {
+        "theorem_number": "98",
+        "sources": [
+            {
+                "link": "https://www.isa-afp.org/entries/Bertrands_Postulate.html"
+            }
+        ]
+    },
+    {
+        "theorem_number": "99",
+        "sources": [
+            {
+                "link": "https://www.isa-afp.org/entries/Buffons_Needle.html"
+            }
+        ]
+    },
+    {
+        "theorem_number": "100",
+        "sources": [
+            {
+                "link": "https://www.isa-afp.org/entries/Descartes_Sign_Rule.html"
+            }
+        ]
+    }
+]
