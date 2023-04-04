@@ -2,6 +2,8 @@
  * Define types for use in formal math libraries study 
  */
 
+import { ParsedUrlQuery } from "querystring";
+
 // Represents a math library
 export type Library  = {
     name: string;
@@ -55,4 +57,50 @@ export type Diff = {
     insertions: number;
     deletions: number;
     diff?: string;
+}
+
+export type PullRequest = {
+    author?: string;
+    number: number;
+    diff_summary: DiffSum[];
+    state: string;
+    open_date: string;
+    update_date: string;
+    discussion: Comment[];
+    review_discussion: ReviewComment[];
+    tags: Tag[];
+    commits: PRCommit[]
+}
+
+export type DiffSum = {
+    file: string;
+    status: string;
+    additions: number;
+    deletions: number;
+}
+
+export type Comment = {
+    author?: string;
+    date: string;
+    comment?: string;
+}
+
+export type ReviewComment = {
+    author: string;
+    file: string;
+    date: string;
+    comment: string;
+}
+
+export type PRCommit = {
+    author?: string;
+    committer?: string;
+    hash: string;
+    message: string;
+    date?: string | null;
+}
+
+export type Tag = {
+    tag: string;
+    description?: string | null;
 }
