@@ -20,12 +20,15 @@ type PRResponse = {
 
 export class Searcher {
 
-    octokit: Octokit = new Octokit({auth: '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'})
+    octokit: Octokit = new Octokit({auth: 'not telling'})
 
     language: string
 
-    constructor(lang: string) {
+    constructor(lang: string, auth?: string) {
         this.language = lang
+        if (auth) {
+            this.octokit = new Octokit({auth: auth})
+        }
     }
 
     async getPRList(owner: string, repo: string, url: string) {
@@ -75,18 +78,20 @@ export class Searcher {
 
         var pullRequests: PullRequest[] = []
         for (var index in prs) {
-            // Check rate limit and wait if needed
-            var status = await this.octokit.rest.rateLimit.get()
-            if (status.headers['x-ratelimit-remaining'] && parseInt(status.headers['x-ratelimit-remaining']) < 10) {
-                var resetTime = status.headers['x-ratelimit-reset'] ? parseInt(status.headers['x-ratelimit-reset']) * 1000 : 0
-                var currentTime = Date.now()
+            try {
+                pullRequests.push(await this.analyzePR(prs[index], owner, repo))
+            } catch (error) {
+                var status = await this.octokit.rest.rateLimit.get()
+                const resetTime = Number(status.headers['x-ratelimit-reset']) * 1000
+                const currentTime = Date.now()
                 var waitTime = resetTime - currentTime
                 console.log(`Rate limit reached. Waiting for ${waitTime} ms`)
                 var progress: number = (parseInt(index) / prs.length) * 100
                 console.log(`Progress: ${progress}%`)
-                await new Promise((resolve) => setTimeout(resolve, waitTime))
+                await new Promise(resolve => setTimeout(resolve, waitTime))
+                pullRequests.push(await this.analyzePR(prs[index], owner, repo))
             }
-            pullRequests.push(await this.analyzePR(prs[index], owner, repo))
+            
         }
 
         fs.writeFileSync(`${owner}_${repo}_PullRequests.json`, JSON.stringify(pullRequests))

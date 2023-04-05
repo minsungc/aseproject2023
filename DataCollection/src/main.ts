@@ -6,11 +6,13 @@ import { cloneMirrorTask } from "simple-git/dist/src/lib/tasks/clone";
 import { Library } from "./LibraryTypes";
 import { Getter } from "./Getter"
 import fs from 'fs'
-import { Searcher } from "./MathLibraryPRs";
+import { Searcher } from './MathLibraryPRs'
 
 async function main() {
     // Language name
     const search = new Searcher('Lean')
+    // Language name and auth token
+    //const search = new Searcher('Lean', 'YOUR TOKEN HERE')
     // owner, library name, https clone link
     search.getPRList('leanprover-community', 'mathlib', 'https://github.com/leanprover-community/mathlib.git')
 }
