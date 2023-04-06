@@ -1,0 +1,23 @@
+/home/minsung/aseproject2023/DataCollection/node_modules/simple-git/src/lib/plugins/error-detection.plugin.ts:42
+            return { error: new GitError(undefined, error.toString('utf-8')) };
+                            ^
+GitError: fatal: destination path 'Libraries/Coq/math-comp/math-comp' already exists and is not an empty directory.
+
+    at Object.action (/home/minsung/aseproject2023/DataCollection/node_modules/simple-git/src/lib/plugins/error-detection.plugin.ts:42:29)
+    at PluginStore.exec (/home/minsung/aseproject2023/DataCollection/node_modules/simple-git/src/lib/plugins/plugin-store.ts:29:29)
+    at /home/minsung/aseproject2023/DataCollection/node_modules/simple-git/src/lib/runners/git-executor-chain.ts:127:42
+    at new Promise (<anonymous>)
+    at GitExecutorChain.handleTaskData (/home/minsung/aseproject2023/DataCollection/node_modules/simple-git/src/lib/runners/git-executor-chain.ts:124:14)
+    at GitExecutorChain.<anonymous> (/home/minsung/aseproject2023/DataCollection/node_modules/simple-git/src/lib/runners/git-executor-chain.ts:100:40)
+    at Generator.next (<anonymous>)
+    at fulfilled (/home/minsung/aseproject2023/DataCollection/node_modules/simple-git/dist/cjs/index.js:55:24) {
+  task: {
+    commands: [
+      'clone',
+      'https://github.com/math-comp/math-comp',
+      'Libraries/Coq/math-comp/math-comp'
+    ],
+    format: 'utf-8',
+    parser: [Function: parser]
+  }
+}

@@ -1,0 +1,1 @@
+{"author":"gares","number":181,"diff_summary":[{"file":".travis.yml","status":"M","additions":0,"deletions":1}],"state":"merged","open_date":"2018-02-27T10:44:30Z","update_date":"2018-03-03T09:24:59Z","discussion":[],"review_discussion":[],"tags":[],"commits":[{"hash":"27294346fffdbb0f719e84787b4f845576e48d46","message":"travis: disable Coq 8.5","date":"2018-02-27T10:43:27Z"}]}
