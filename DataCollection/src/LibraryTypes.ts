@@ -19,11 +19,6 @@ export type Commit = {
     message: string; 
 }
 
-// Represents a math library at some historical checkpoint
-export type LibraryCheckpoint  = {
-
-}
-
 // Represents a theorem
 export type Theorem = {
     theorem?: string,
@@ -74,7 +69,7 @@ export type PullRequest = {
 
 export type DiffSum = {
     file: string;
-    status: string;
+    status?: string;
     additions: number;
     deletions: number;
 }
