@@ -3,12 +3,10 @@
  */
 
 import fs from 'fs'
-import { SimpleGit, simpleGit, StatusResult } from 'simple-git'
-import { readFile } from 'fs/promises'
+import { simpleGit } from 'simple-git'
 import { Octokit } from 'octokit'
 import { components } from '@octokit/openapi-types'
 import { DiffSum, PRCommit, PullRequest, ReviewComment, Comment, Tag } from './LibraryTypes'
-import { fileURLToPath } from 'url'
 import axios from 'axios'
 import { throttling } from '@octokit/plugin-throttling'
 
@@ -35,18 +33,18 @@ export class Searcher {
                         `Request quota exhausted for request ${options.method} ${options.url}`
                     );
                 
-                    if (retryCount < 1) {
+                    if (options.request.retryCount < 1) {
                         // only retries once
                         octokit.log.info(`Retrying after ${retryAfter} seconds!`);
                         return true;
                     }
-                    },
+                },
                     onSecondaryRateLimit: (retryAfter: number, options : any, octokit:any) => {
                     // does not retry, only logs a warning
                     octokit.log.warn(
                         `SecondaryRateLimit detected for request ${options.method} ${options.url}`
                     );
-                    },
+                },
             }
         })
     }
@@ -98,7 +96,7 @@ export class Searcher {
     async getPRList(owner: string, repo: string, url: string) {
 
         // Make sure the library has been cloned and pull
-        if (!fs.existsSync(`${this.language}/${owner}/${repo}`)) {
+        if (!fs.existsSync(`Libraries/${this.language}/${owner}/${repo}`)) {
             await simpleGit().clone(url, `Libraries/${this.language}/${owner}/${repo}`)
         } else {
             await simpleGit(`Libraries/${this.language}/${owner}/${repo}`).pull()
@@ -120,12 +118,12 @@ export class Searcher {
     }
 
     async analyzePR(pr: components['schemas']['pull-request'], owner: string, repo: string): Promise<PullRequest> {
-        const cacheDirectory = `source/PRs/${owner}/${repo}`
+        const cacheDirectory = `cache/PRs/${owner}/${repo}`
         const cacheFile = `${cacheDirectory}/${pr.number}.json`
         if (fs.existsSync(cacheFile)) {
             return JSON.parse(await fs.promises.readFile(cacheFile, 'utf-8')) as PullRequest
         }
-        //console.log(`Processing PR: ${pr.number}`)
+        console.log(`Processing PR: ${pr.number}`)
         // Get state and dates of PR
         var open_date = pr.created_at
         var state = 'open'
