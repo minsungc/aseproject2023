@@ -28,14 +28,15 @@ export class Searcher {
         const MyOctokit = Octokit.plugin(throttling)
         this.octokit = new MyOctokit({auth: auth,
             throttle: {
-                onRateLimit: (retryAfter :number, options: any, octokit: any, retryCount: any) => {
-                    octokit.log.warn(
+                onRateLimit: async (retryAfter: number, options: any, octokit: any, retryCount: any) => {
+                    await octokit.log.warn(
                         `Request quota exhausted for request ${options.method} ${options.url}`
                     );
                 
-                    if (options.request.retryCount < 1) {
-                        // only retries once
-                        octokit.log.info(`Retrying after ${retryAfter} seconds!`);
+                    if (options.request.retryCount < 2) {
+                        // Re-tries twice with a 60 second delay
+                        await new Promise(resolve => setTimeout(resolve, 6000))
+                        await octokit.log.info(`Retrying after ${retryAfter} seconds!`);
                         return true;
                     }
                 },
@@ -51,7 +52,7 @@ export class Searcher {
 
     async _getPRS(owner: string, repo: string, url: string){
         const cacheDirectory = `cache/PRs/${owner}/${repo}`
-        const cacheFile = `${cacheDirectory}/list.json`
+        const cacheFile = `${cacheDirectory}/${this.language}.json`
         if(fs.existsSync(cacheFile)){
             return JSON.parse(await fs.promises.readFile(cacheFile, 'utf-8'));
         }
