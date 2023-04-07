@@ -54,7 +54,7 @@ export class CommitGetter {
                 committer_email = matches[1]
             }
             return {hash: entry.hash, author: entry.author_email, committer: committer_email, date: entry.date,
-                message: entry.message, diff: diff}
+                message: entry.message, body: entry.body, diff: diff}
         }))
 
         // Save commits in a JSON file

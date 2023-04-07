@@ -102,5 +102,6 @@ export type Commit = {
     committer: string;
     date: string;
     message: string;
+    body: string;
     diff: DiffSum[]
 }
