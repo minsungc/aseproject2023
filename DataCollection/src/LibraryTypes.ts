@@ -4,21 +4,6 @@
 
 import { ParsedUrlQuery } from "querystring";
 
-// Represents a math library
-export type Library  = {
-    name: string;
-    clone_url: string;
-    commits?: Commit[];
-}
-
-// Represents a library commit
-export type Commit = {
-    id: string;
-    author: string;
-    date: string;
-    message: string; 
-}
-
 // Represents a theorem
 export type Theorem = {
     theorem?: string,
@@ -96,6 +81,26 @@ export type PRCommit = {
 }
 
 export type Tag = {
-    tag: string;
+    tag?: string;
     description?: string | null;
+}
+
+export type Issue = {
+    author?: string;
+    number: number;
+    state: string;
+    open_date: string;
+    update_date: string;
+    discussion: Comment[];
+    tags: Tag[];
+    pull_requests: number[]
+}
+
+export type Commit = {
+    hash: string;
+    author: string;
+    committer: string;
+    date: string;
+    message: string;
+    diff: DiffSum[]
 }

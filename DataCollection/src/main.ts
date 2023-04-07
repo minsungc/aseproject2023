@@ -2,11 +2,14 @@
  * 
  */
 
-import { cloneMirrorTask } from "simple-git/dist/src/lib/tasks/clone";
-import { Library } from "./LibraryTypes";
+
 import { Getter } from "./Getter"
 import fs from 'fs'
+
+// Comment out the one not being used
 import { Searcher } from "./MathLibraryPRs";
+//import { Searcher } from "./MathLibraryISs"
+import { CommitGetter } from "./MathLibraryCMs"
 
 import dotenv from 'dotenv';
 
@@ -19,5 +22,12 @@ async function main() {
     search.getPRList('coq', 'coq', 'https://github.com/coq/coq.git')
 }
 
-main()
+async function othermain() {
+    // Language name and github token
+    const com = new CommitGetter('Lean', 'leanprover-community', 'mathlib', 'https://github.com/leanprover-community/mathlib.git')
+    await com.setup()
+    await com.getCommits()
+}
+
+othermain()
 
