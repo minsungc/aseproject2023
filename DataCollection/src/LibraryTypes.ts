@@ -4,21 +4,6 @@
 
 import { ParsedUrlQuery } from "querystring";
 
-// Represents a math library
-export type Library  = {
-    name: string;
-    clone_url: string;
-    commits?: Commit[];
-}
-
-// Represents a library commit
-export type Commit = {
-    id: string;
-    author: string;
-    date: string;
-    message: string; 
-}
-
 // Represents a theorem
 export type Theorem = {
     theorem?: string,
