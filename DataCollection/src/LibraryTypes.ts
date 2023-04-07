@@ -96,6 +96,17 @@ export type PRCommit = {
 }
 
 export type Tag = {
-    tag: string;
+    tag?: string;
     description?: string | null;
+}
+
+export type Issue = {
+    author?: string;
+    number: number;
+    state: string;
+    open_date: string;
+    update_date: string;
+    discussion: Comment[];
+    tags: Tag[];
+    pull_requests: number[]
 }
