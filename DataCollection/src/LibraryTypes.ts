@@ -95,3 +95,12 @@ export type Issue = {
     tags: Tag[];
     pull_requests: number[]
 }
+
+export type Commit = {
+    hash: string;
+    author: string;
+    committer: string;
+    date: string;
+    message: string;
+    diff: DiffSum[]
+}

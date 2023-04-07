@@ -9,6 +9,7 @@ import fs from 'fs'
 // Comment out the one not being used
 import { Searcher } from "./MathLibraryPRs";
 //import { Searcher } from "./MathLibraryISs"
+import { CommitGetter } from "./MathLibraryCMs"
 
 import dotenv from 'dotenv';
 
@@ -21,5 +22,12 @@ async function main() {
     search.getPRList('leanprover-community', 'mathlib', 'https://github.com/leanprover-community/mathlib.git')
 }
 
-main()
+async function othermain() {
+    // Language name and github token
+    const com = new CommitGetter('Lean', 'leanprover-community', 'mathlib', 'https://github.com/leanprover-community/mathlib.git')
+    await com.setup()
+    await com.getCommits()
+}
+
+othermain()
 
