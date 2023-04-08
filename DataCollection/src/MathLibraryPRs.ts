@@ -189,7 +189,7 @@ export class Searcher {
             }))
         }
         var prReviewComments: ReviewComment[] = reviewComments.map(comment => {
-            return {author: comment.user.login, file: comment.path, date: comment.created_at, comment: comment.body}
+            return {author: comment.user?.login, file: comment.path, date: comment.created_at, comment: comment.body}
         })
         // Get PR discussion
         var comments: components['schemas']['issue-comment'][] = []
