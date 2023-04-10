@@ -120,7 +120,7 @@
      }
  
      async analyzeIS(is: components['schemas']['issue'], owner: string, repo: string): Promise<Issue> {
-         const cacheDirectory = `cache/iss/${owner}/${repo}`
+         const cacheDirectory = x`cache/iss/${owner}/${repo}`
          const cacheFile = `${cacheDirectory}/${is.number}.json`
          if (fs.existsSync(cacheFile)) {
              return JSON.parse(await fs.promises.readFile(cacheFile, 'utf-8')) as Issue
@@ -159,19 +159,19 @@
             }
          })
          // Get the list of pull request ids
+         var events: components['schemas']['timeline-issue-events'][] = []
          pageNumber = 1
-         var prs: components['schemas']['pull-request'][] = []
-         response = await this.octokit.request(`GET /repos/${owner}/${repo}/issues/${is.number}/pulls`), {
+         response = await this.octokit.rest.issues.listEventsForTimeline({
             owner: owner,
             repo: repo,
             issue_number: is.number,
             state: 'all',
             per_page: 100,
             page: pageNumber
-         }
+         })
          while (response.data.length != 0) {
             pageNumber++;
-            prs = prs.concat(response.data)
+            events = events.concat(response.data)
             response = await this.octokit.request(`GET /repos/${owner}/${repo}/issues/${is.number}/pulls`), {
                 owner: owner,
                 repo: repo,
@@ -181,8 +181,14 @@
                 page: pageNumber
              }
         }
-        var prIDs: number[] = prs.map(pr => {
-            return pr.number
+        var prIDs: number[] = []
+        events.forEach(event => {
+            if (event.event === "cross-referenced" && event.source && event.source?.type === "pull_request") {
+                const prNumber = event.source.issue?.number
+                if (prNumber && !prIDs.includes(prNumber)) {
+                  prIDs.push(prNumber);
+                }
+              }
         })
          // Create and return issue Description
          var description = {author: is.user?.login, number: is.number, state: state, open_date: open_date, update_date: update_date, 
