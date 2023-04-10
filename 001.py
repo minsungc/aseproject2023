@@ -5,7 +5,7 @@ import matplotlib.dates as mdates
 from datetime import datetime
 
 # Open the JSON file
-with open('CoqTheorems.json') as f:
+with open('DataCollection/LeanTheorems.json') as f:
     # Load the JSON data into a Python dictionary
     data = json.load(f)
 
@@ -35,13 +35,20 @@ for element in data:
         # If it's not a dictionary, print an error message
         print("Each element in the JSON file must be a dictionary.")
 
-print(commits)
-print(last_commit_date)
-# Plot a histogram of the lengths using matplotlib
-plt.figure(figsize=(15, 3))
-plt.scatter(names, commits)
-plt.suptitle('CoqTheorems Commit Counts per Therem')
-plt.show()
+
+# These are here because of a JSON bug in theorem 96 of Lean.
+# Uncomment if you want the Lean plot
+# names.append(96)
+# commits.append(1)
+
+# print(commits)
+# print(last_commit_date)
+# # Plot a histogram of the lengths using matplotlib
+# plt.figure(figsize=(15, 3))
+# plt.scatter(names, commits)
+# plt.suptitle('Lean Commit Counts per Therem\n')
+# # plt.title('\nTheorem 41 excluded as outlier', fontsize = 6)
+# plt.show()
 
 # Convert date strings (e.g. 2014-10-18) to datetime
 dates = [datetime.strptime(d, "%Y-%m-%dT%H:%M:%S%z") for d in last_commit_date]
@@ -66,7 +73,7 @@ for d, l, r in zip(dates, levels, names):
                 verticalalignment="bottom" if l > 0 else "top")
 
 # format x-axis with 4-month intervals
-ax.xaxis.set_major_locator(mdates.MonthLocator(interval=4))
+ax.xaxis.set_major_locator(mdates.MonthLocator(interval=12))
 ax.xaxis.set_major_formatter(mdates.DateFormatter("%b %Y"))
 plt.setp(ax.get_xticklabels(), rotation=30, ha="right")
 
@@ -74,5 +81,5 @@ plt.setp(ax.get_xticklabels(), rotation=30, ha="right")
 ax.yaxis.set_visible(False)
 ax.spines[["left", "top", "right"]].set_visible(False)
 
-ax.margins(y=0.1)
+ax.margins(y=0.3)
 plt.show()
