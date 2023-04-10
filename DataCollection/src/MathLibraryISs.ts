@@ -120,7 +120,7 @@
      }
  
      async analyzeIS(is: components['schemas']['issue'], owner: string, repo: string): Promise<Issue> {
-         const cacheDirectory = x`cache/iss/${owner}/${repo}`
+         const cacheDirectory = `cache/iss/${owner}/${repo}`
          const cacheFile = `${cacheDirectory}/${is.number}.json`
          if (fs.existsSync(cacheFile)) {
              return JSON.parse(await fs.promises.readFile(cacheFile, 'utf-8')) as Issue
