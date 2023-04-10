@@ -120,7 +120,7 @@ export class Searcher {
     }
  
     async analyzeIS(is: components['schemas']['issue'], owner: string, repo: string): Promise<Issue> {
-        const cacheDirectory = `cache/iss/${owner}/${repo}`
+        const cacheDirectory = `cache/ISs/${owner}/${repo}`
         const cacheFile = `${cacheDirectory}/${is.number}.json`
         if (fs.existsSync(cacheFile)) {
             return JSON.parse(await fs.promises.readFile(cacheFile, 'utf-8')) as Issue
