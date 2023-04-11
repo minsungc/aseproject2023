@@ -1,7 +1,10 @@
 /**
  * Run scripts
  */
+<<<<<<< HEAD
 
+=======
+>>>>>>> c4b5b38a3af4c4cbb4ece5196cb0b277a4da24e9
 // Comment out the one not being used
 //import { Searcher } from "./MathLibraryPRs";
 import { Searcher } from "./MathLibraryISs"
@@ -19,12 +22,12 @@ async function main() {
     search.getISList('coq', 'coq', 'https://github.com/coq/coq.git')
 }
 
-async function othermain() {
-    //Language name and github token
-    const com = new CommitGetter('Isabelle', 'isabelle-prover', 'mirror-isabelle', 'https://github.com/isabelle-prover/mirror-isabelle.git')
-    await com.setup()
-    await com.getCommits()
-}
+// async function othermain() {
+//     //Language name and github token
+//     const com = new CommitGetter('Isabelle', 'isabelle-prover', 'mirror-isabelle', 'https://github.com/isabelle-prover/mirror-isabelle.git')
+//     await com.setup()
+//     await com.getCommits()
+// }
 
 main()
 
