@@ -105,3 +105,34 @@ export type Commit = {
     body: string;
     diff: DiffSum[]
 }
+
+export type Repository = {
+    name: string;
+    full_name: string;
+    owner: {
+        login: string;
+        type: string;
+    };
+    html_url: string;
+    description?: string | null;
+    is_fork: boolean;
+    stars: number;
+    created_at?: string | null;
+    updated_at?: string | null;
+    clone_url: string;
+    commits: number;
+    contributors: Contributor[];
+    issues: number;
+    pull_requests: number;
+    forks: number;
+    archived: boolean;
+    allow_forking?: boolean;
+    topics?: string[];
+    watchers: number
+}
+
+export type Contributor = {
+    login?: string;
+    email?: string;
+    commits: number;
+}
