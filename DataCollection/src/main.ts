@@ -30,5 +30,5 @@ async function othermain() {
     await com.getCommits()
 }
 
-main()
+othermain()
 
