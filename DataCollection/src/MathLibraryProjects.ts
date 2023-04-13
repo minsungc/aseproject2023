@@ -84,66 +84,66 @@ export class ReposByLanguage {
         return repos
     }
 
-    async analyzeRepos() {
-        // Check that there are repos to be analyzed
-        var cacheDirectory = `cache/repos/${this.language}`
-        var cacheFile = `${cacheDirectory}/repos.json`
-        if (!this.repos && !fs.existsSync(cacheFile)) {
-            await this.searchRepos()
-        } else if (!this.repos) {
-            this.repos = JSON.parse(await fs.promises.readFile(cacheFile, 'utf-8')) as components['schemas']['repository'][]
-        }
-        if (this.repos) {
-            this.analyzedRepos = this.repos.map((repo) => {
+    // async analyzeRepos() {
+    //     // Check that there are repos to be analyzed
+    //     var cacheDirectory = `cache/repos/${this.language}`
+    //     var cacheFile = `${cacheDirectory}/repos.json`
+    //     if (!this.repos && !fs.existsSync(cacheFile)) {
+    //         await this.searchRepos()
+    //     } else if (!this.repos) {
+    //         this.repos = JSON.parse(await fs.promises.readFile(cacheFile, 'utf-8')) as components['schemas']['repository'][]
+    //     }
+    //     if (this.repos) {
+    //         this.analyzedRepos = this.repos.map((repo) => {
 
-                var {commits, contributors} = getCommits()
-                var issues = getIssues()
-                var prs = getPRs()
+    //             var {commits, contributors} = this.getCommits()
+    //             var issues = this.getIssues()
+    //             var prs = this.getPRs()
 
-                return {name: repo.name, 
-                    full_name: repo.full_name,
-                    owner: { login: repo.owner.login, type: repo.owner.type},
-                    html_url: repo.html_url,
-                    description: repo.description,
-                    is_fork: repo.fork,
-                    stars: repo.stargazers_count,
-                    created_at: repo.created_at,
-                    updated_at: repo.updated_at,
-                    clone_url: repo.clone_url,
-                    commits: commits,
-                    contributors: contributors,
-                    issues: issues,
-                    pull_requests: prs,
-                    forks: repo.forks,
-                    archived: repo.archived,
-                    allow_forking: repo.allow_forking,
-                    topics: repo.topics,
-                    watchers: repo.watchers
-                }
-            })
-        }
-    }
+    //             return {name: repo.name, 
+    //                 full_name: repo.full_name,
+    //                 owner: { login: repo.owner.login, type: repo.owner.type},
+    //                 html_url: repo.html_url,
+    //                 description: repo.description,
+    //                 is_fork: repo.fork,
+    //                 stars: repo.stargazers_count,
+    //                 created_at: repo.created_at,
+    //                 updated_at: repo.updated_at,
+    //                 clone_url: repo.clone_url,
+    //                 commits: commits,
+    //                 contributors: contributors,
+    //                 issues: issues,
+    //                 pull_requests: prs,
+    //                 forks: repo.forks,
+    //                 archived: repo.archived,
+    //                 allow_forking: repo.allow_forking,
+    //                 topics: repo.topics,
+    //                 watchers: repo.watchers
+    //             }
+    //         })
+    //     }
+    // }
 
-    async getCommits(full_name: string, clone_url: string) {
-        var dir = `Libraries/${this.language}/${full_name}`
-        // Make sure the repository is cloned 
-        if (!fs.existsSync(dir)) {
-            await simpleGit().clone(clone_url, dir)
-        } else {
-            await simpleGit(dir).pull()
-        }
-        const git: SimpleGit = simpleGit(dir)
-        // Get the commits
-        const log = (await git.log()).all
+    // async getCommits(full_name: string, clone_url: string) {
+    //     var dir = `Libraries/${this.language}/${full_name}`
+    //     // Make sure the repository is cloned 
+    //     if (!fs.existsSync(dir)) {
+    //         await simpleGit().clone(clone_url, dir)
+    //     } else {
+    //         await simpleGit(dir).pull()
+    //     }
+    //     const git: SimpleGit = simpleGit(dir)
+    //     // Get the commits
+    //     const log = (await git.log()).all
         
-    }
+    // }
 
-    async getIssues() {
+    // async getIssues() {
 
-    }
+    // }
 
-    async getPRs() {
+    // async getPRs() {
 
-    }
+    // }
 
 }

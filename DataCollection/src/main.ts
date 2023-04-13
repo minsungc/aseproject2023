@@ -1,10 +1,6 @@
 /**
  * Run scripts
  */
-<<<<<<< HEAD
-
-=======
->>>>>>> c4b5b38a3af4c4cbb4ece5196cb0b277a4da24e9
 // Comment out the one not being used
 //import { Searcher } from "./MathLibraryPRs";
 import { Searcher } from "./MathLibraryISs"
