@@ -1,0 +1,155 @@
+\usepackage{algpseudocode, amsmath, latexsym, stmaryrd, enumerate, mathtools, graphicx, mdframed, array}
+
+\usepackage{caption}
+\usepackage{subcaption}
+
+\usepackage{proof}
+
+\usepackage{tikz}
+\captionsetup[table]{position=bottom} 
+
+\usepackage{tikz-cd}
+\usetikzlibrary{decorations.pathmorphing}
+
+% basic stuff
+
+\newcommand{\paren}[1]{\left({#1}\right)}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\de}{\Delta}
+\newcommand{\st}{\ \text{s.t.} \ }
+\newcommand{\absval}[1]{\left|{#1}\right|}
+\newcommand{\hess}[1]{H{#1}}
+\newcommand{\dive}{\nabla \cdot}
+\newcommand{\curl}{\nabla \times}
+\newcommand{\dom}{\text{dom}}
+\newcommand{\im}{\text{im}}
+\newcommand{\tr}{\text{tr}}
+\newcommand{\eset}{\varnothing}
+\newcommand{\ob}[1]{\text{ob}\left({#1}\right)}
+\newcommand{\D}{\mathbb{D}}
+\renewcommand{\H}{\mathbb{H}}
+\newcommand{\arr}[1]{\text{arr}\left({#1}\right)}
+\newcommand{\vspan}{\text{span}}
+\newcommand{\power}{\mathcal{P}}
+\newcommand{\area}{\text{area}}
+\newcommand{\ran}{\text{ran}}
+\newcommand{\vol}{\text{vol}}
+\newcommand{\fl}[1]{\left\lfloor{#1}\right\rfloor}
+\newcommand{\ang}[1]{\langle{#1}\rangle}
+\renewcommand{\Re}{\text{Re}}
+\renewcommand{\Im}{\text{Im}}
+\newcommand{\cl}[1]{\overline{#1}}
+\newcommand{\separate}{\smallskip\noindent}
+\newcommand{\red}{\longrightarrow}
+\newcommand{\proves}{\vdash}
+\newcommand{\m}[1]{\mathsf{#1}}
+\renewcommand{\|}{\ | \ }
+\newcommand{\Rew}{\text{Rew}}
+
+\newcommand{\TODO}[1]{{\color{red} TODO: {#1}}}
+
+% Keywords for daPPL
+\newcommand{\dappl}{\texttt{daPPL}}
+
+\newcommand{\aexp}{\texttt{aexp}}
+\newcommand{\Bool}{\texttt{Bool}}
+\newcommand{\Choice}{\texttt{Choice}}
+\newcommand{\flip}[1]{\texttt{flip }{#1}}
+\newcommand{\reward}[1]{\texttt{reward }{#1}}
+\newcommand{\letbind}[2]{\texttt{let }{#1}\texttt{ in }{#2}}
+\newcommand{\ite}[3]{\texttt{if }{#1}\texttt{ then }{#2}\texttt{ else }{#3}}
+\renewcommand{\choose}[1]{\texttt{choose }{#1} \ }
+
+\newcommand{\denote}[1]{\llbracket{#1}\rrbracket}
+
+% Keywords for utility, WMC
+\newcommand{\EU}{\mathbb{E}U}
+\newcommand{\MEU}{M\mathbb{E}U}
+\newcommand{\AMC}{\mathtt{AMC}}
+\newcommand{\WMC}{\mathtt{WMC}}
+\newcommand{\opt}{\pi^{\star}}
+\newcommand{\conjneg}[1]{\widehat{\overline{{#1}}}}
+
+% Miscellany
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+% Theorem environments
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newcommand{\dice}{\texttt{Dice}}
+\newcommand{\mathlib}{\texttt{mathlib}~}
+
+\DeclareFontFamily{U}{mathx}{\hyphenchar\font45}
+\DeclareFontShape{U}{mathx}{m}{n}{
+      <5> <6> <7> <8> <9> <10>
+      <10.95> <12> <14.4> <17.28> <20.74> <24.88>
+      mathx10
+      }{}
+\DeclareSymbolFont{mathx}{U}{mathx}{m}{n}
+\DeclareFontSubstitution{U}{mathx}{m}{n}
+\DeclareMathAccent{\widecheck}{0}{mathx}{"71}
+
+% daPPL code env
+\usepackage{listings,xcolor,lstautogobble}
+
+\definecolor{background_color}{RGB}{255, 255, 255}
+\definecolor{string_color}    {RGB}{180, 156,   0}
+\definecolor{identifier_color}{RGB}{  0,   0,   0}
+\definecolor{keyword_color}   {RGB}{ 64, 100, 255}
+\definecolor{comment_color}   {RGB}{  0, 117, 110}
+\definecolor{number_color}    {RGB}{ 84,  84,  84}
+\lstdefinestyle{15150code}{
+    basicstyle=\ttfamily,
+    numberstyle=\tiny\ttfamily\color{number_color},
+    backgroundcolor=\color{background_color},
+    stringstyle=\color{string_color},
+    identifierstyle=\color{identifier_color},
+    keywordstyle=\color{keyword_color},
+    commentstyle=\color{comment_color},
+    numbers=none,
+    frame=none,
+    columns=fixed,
+    tabsize=2,
+    breaklines=true,
+    keepspaces=true,
+    showstringspaces=false,
+    captionpos=b,
+    autogobble=true,
+    mathescape=true,
+}
+\lstdefinelanguage{sml}{
+    language=ML,
+    morestring=[b]",
+    morecomment=[s]{(*}{*)},
+    morekeywords={
+        bool, char, exn, int, real, string, unit, list, option,
+        EQUAL, GREATER, LESS, NONE, SOME, nil, xor,
+        andalso, or, false, not,
+        if, then, else, case, of, as,
+        let, in, end, local, val, rec,
+        datatype, type, exception, handle,
+        fun, fn, op, raise, ref,
+        structure, struct, signature, sig, functor,
+        include, open, use, infix, infixr, o, print, flip, choose, observe,reward 
+    }
+}
+% code inline
+\newcommand{\code}[2][]{{\sloppy
+\ifmmode
+    \text{\lstinline[language=sml,style=15150code,#1]`#2`}
+\else
+    {\lstinline[language=sml,style=15150code,#1]`#2`}%
+\fi}}
+
+% code block
+\lstnewenvironment{codeblock}[1][]{\lstset{language=sml,style=15150code,#1}}{}
