@@ -24,8 +24,8 @@ with open('DataCollection/IsabelleTheorems.json') as f_is:
     # Load the JSON data into a Python dictionary
     is_data = json.load(f_is)
 
-data = lean_data
-datasetname = "Isabelle "
+data = is_data
+datasetname = "Lean "
 
 #### latest activity timeline ###
 commits = []
@@ -166,7 +166,7 @@ for filename in os.listdir('DataCollection/coq-prs'):
             coq_pr = json.load(f)
         # Append the JSON data to the list
         coq_pr_data.extend(coq_pr)
-pr_data=is_pr_data
+pr_data=lean_pr_data
 
 
 pull_dates= []
@@ -183,6 +183,15 @@ for element in pr_data:
         merged_count += 1
         merge_dates.append(datetime.strptime(element['open_date'], "%Y-%m-%dT%H:%M:%S%z"))
     elif element['state'] == 'closed':
+        x = element['discussion']
+        for i in x :
+            if i['author'] == 'bors[bot]' :
+                msg = i['comment']
+                txt = 'Pull request successfully merged into master.'
+                if os.path.commonprefix([msg,txt]) == txt :
+                    merged_count += 1
+                    merge_dates.append(datetime.strptime(element['open_date'], "%Y-%m-%dT%H:%M:%S%z"))
+                    continue
         closed_count += 1
 
 # Count the number of pull requests and merged pull requests per year

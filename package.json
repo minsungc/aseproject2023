@@ -1,10 +1,3 @@
-{
-  "dependencies": {
-    "fs": "^0.0.1-security",
-    "octokit": "^2.0.14",
-    "simple-git": "^3.17.0"
-  },
-  "devDependencies": {
-    "typescript": "^5.0.4"
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:4815fa3b2a4c0eba8c5318bc13045ac5a88ea459bd4f3e80855c3eaa741868fc
+size 166

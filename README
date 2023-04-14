@@ -1,1 +1,9 @@
-Testing Testing	
+Software artifact for Gwen, Minsung, Mahsa's ASE project
+
+/DataCollection : where the data .jsons for the data are. The code to collect the .json is under /DataCollection/src.
+
+/doc : where the final report source .tex and .pdf files are.
+
+/Figures : where the Figures are exported to by default.
+
+001.py : python scripts to process data
