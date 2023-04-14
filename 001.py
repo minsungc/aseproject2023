@@ -4,6 +4,7 @@ import numpy as np
 import matplotlib.dates as mdates
 from datetime import datetime
 from matplotlib.dates import DateFormatter
+import os
 
 
 # Open the JSON file
@@ -23,7 +24,7 @@ with open('DataCollection/IsabelleTheorems.json') as f_is:
     # Load the JSON data into a Python dictionary
     is_data = json.load(f_is)
 
-data = is_data
+data = lean_data
 datasetname = "Isabelle "
 
 #### latest activity timeline ###
@@ -73,7 +74,7 @@ ax.yaxis.set_visible(False)
 ax.spines[["left", "top", "right"]].set_visible(False)
 
 ax.margins(y=0.3)
-plt.show()
+#plt.show()
 
 #### Commit Counts per Therem ###
 # These are here because of a JSON bug in theorem 96 of Lean.
@@ -132,4 +133,107 @@ ax.xaxis.set_major_formatter(date_formatter)
 ax.set_xlabel("Year")
 ax.set_ylabel("Number of Commits")
 ax.set(title= datasetname + "number of commits per year")
+#plt.show()
+
+#### all pull requests and merged pull requests###
+# Open the JSON file
+pr_files = [
+    'leanprover-community_lean_PullRequests.json',
+    'leanprover-community_mathlib_PullRequests.json',
+    'isabelle-prover_mirror-isabelle_PullRequests.json',
+]
+coq_pr_path = 'coq-prs'
+with open('DataCollection/leanprover-community_lean_PullRequests.json') as f_lean_pr:
+    # Load the JSON data into a Python dictionary
+    lean_pr_data = json.load(f_lean_pr)
+
+with open('DataCollection/isabelle-prover_mirror-isabelle_PullRequests.json') as f_is_pr:
+    # Load the JSON data into a Python dictionary
+    is_pr_data = json.load(f_is_pr)
+
+# Define the folder containing the JSON files
+folder_path = "/path/to/folder"
+
+# Initialize an empty list to store the JSON data
+coq_pr_data = []
+
+# Loop through each file in the folder
+for filename in os.listdir('DataCollection/coq-prs'):
+    # Check if the file is a JSON file
+    if filename.endswith(".json"):
+        # Read the JSON data from the file
+        with open(os.path.join('DataCollection/coq-prs', filename), "r") as f:
+            coq_pr = json.load(f)
+        # Append the JSON data to the list
+        coq_pr_data.extend(coq_pr)
+pr_data=is_pr_data
+
+
+pull_dates= []
+merge_dates= []
+open_count = 0
+closed_count = 0
+merged_count =0
+
+for element in pr_data:
+    pull_dates.append(datetime.strptime(element['open_date'], "%Y-%m-%dT%H:%M:%S%z"))
+    if element['state'] == 'open':
+        open_count += 1
+    elif element['state'] == 'merged':
+        merged_count += 1
+        merge_dates.append(datetime.strptime(element['open_date'], "%Y-%m-%dT%H:%M:%S%z"))
+    elif element['state'] == 'closed':
+        closed_count += 1
+
+# Count the number of pull requests and merged pull requests per year
+pull_counts = {}
+merge_counts = {}
+for date in pull_dates:
+    year = date.strftime("%Y")
+    if year in pull_counts:
+        pull_counts[year] += 1
+    else:
+        pull_counts[year] = 1
+for date in merge_dates:
+    year = date.strftime("%Y")
+    if year in merge_counts:
+        merge_counts[year] += 1
+    else:
+        merge_counts[year] = 1
+
+# Sort the counts by year
+pull_counts = dict(sorted(pull_counts.items()))
+merge_counts = dict(sorted(merge_counts.items()))
+# Extract the years from the keys and values
+y_pull_values = list(pull_counts.values())
+y_merge_values = []
+for year in pull_counts.keys():
+    if year in merge_counts:
+        y_merge_values.append(merge_counts[year])
+    else:
+        y_merge_values.append(0)
+
+# Create a line chart with the counts
+fig, ax = plt.subplots()
+#ax.plot_date(x_values, y_pull_values, fmt="bo-", xdate=True, ydate=False, label="All Pull Requests")
+#ax.plot_date(x_values, y_merge_values, fmt="bo-", xdate=True, ydate=False, label="All Pull Requests")
+ax.bar(pull_counts.keys(), y_pull_values, label="All Pull Requests")
+ax.bar(pull_counts.keys(), y_merge_values, label="Merged Pull Requests")
+ax.set_xlabel("Year")
+ax.set_ylabel("Number of Pull Requests")
+ax.set(title= datasetname + "all pull requests and merged pull requests per year")
+ax.legend()
 plt.show()
+
+# Create a pie chart with the counts
+labels = ["Open", "Closed", "Merged"]
+sizes = [open_count, closed_count, merged_count]
+colors = ["yellowgreen", "lightcoral", "gold"]
+explode = (0.1, 0.1, 0.1)  # explode the Open slice
+fig, ax = plt.subplots()
+ax.pie(sizes, explode=explode, labels=labels, colors=colors, autopct="%1.1f%%", startangle=90)
+ax.axis("equal")  # Equal aspect ratio ensures that pie is drawn as a circle.
+ax.set_title(datasetname + "Pull Request State")
+plt.show()
+
+
