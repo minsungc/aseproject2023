@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.10.12)  13 APR 2023 15:48
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.10.12)  15 APR 2023 18:46
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1244,6 +1244,9 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/it' will be
 (Font)              scaled to size 9.0pt on input line 144.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
  (/usr/local/texlive/2022/texmf-dist/tex/generic/stringenc/se-pdfdoc.def
 File: se-pdfdoc.def 2019/11/29 v1.12 stringenc: PDFDocEncoding
 ) (/usr/local/texlive/2022/texmf-dist/tex/generic/stringenc/se-utf8.def
@@ -1264,15 +1267,15 @@ Package rerunfilecheck Info: File `src.out' has not changed.
 (rerunfilecheck)             Checksum: EAE481C779808005AE8572A56984032C;399.
  ) 
 Here is how much of TeX's memory you used:
- 35667 strings out of 478268
- 662422 string characters out of 5846346
- 985494 words of memory out of 5000000
+ 35680 strings out of 478268
+ 662752 string characters out of 5846346
+ 986711 words of memory out of 5000000
  52925 multiletter control sequences out of 15000+600000
- 541023 words of font info for 129 fonts, out of 8000000 for 9000
+ 542376 words of font info for 138 fonts, out of 8000000 for 9000
  1302 hyphenation exceptions out of 8191
  99i,11n,131p,1044b,400s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/libertine/lbtn_7grukw.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-4.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/libertine/lbtn_nh77jq.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/libertine/lbtn_76gpa5.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/libertine/lbtn_25tcsq.enc}</usr/local/texlive/2022/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/libertine/LinBiolinumTB.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/libertine/LinLibertineT.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/libertine/LinLibertineTB.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/libertine/LinLibertineTI.pfb>
-Output written on src.pdf (1 page, 302827 bytes).
+Output written on src.pdf (1 page, 303030 bytes).
 PDF statistics:
  66 PDF objects out of 1000 (max. 8388607)
  49 compressed objects within 1 object stream
