@@ -248,8 +248,8 @@ for element in coq_issue_data:
 issue_counts = {}
 for date in issues_dates:
     year = date.strftime("%Y")
-    if year in issues_dates:
-        issue_counts[year] += 1
+    if year in issue_counts:
+        issue_counts[year] = issue_counts.get(year, 0) + 1
     else:
         issue_counts[year] = 1
 
@@ -262,7 +262,7 @@ plt.show()
 
 # Create a pie chart with the counts
 labels = ["Open", "Closed"]
-sizes = [open_count, closed_count]
+sizes = [open_issue_count, closed_issue_count]
 colors = ["yellowgreen", "lightcoral"]
 explode = (0.1, 0.1)  # explode the Open slice
 fig, ax = plt.subplots()
