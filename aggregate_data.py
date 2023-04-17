@@ -16,6 +16,7 @@ import os
 #     # Load the JSON data into a Python dictionary
 #     theorem_data = json.load(f)
 
+# # Incrementing date every time a theorem is proved
 # date_theorem = {}
 # totaltheorems = 0
 # for element in theorem_data:
@@ -31,6 +32,7 @@ import os
 #     else:
 #         print("Each element in the JSON file must be a dictionary.")
 
+# # manual input for those without valid json entries
 # sort_dates = list(date_theorem.keys())
 # sort_dates.sort()
 # sorted_dt= {i: date_theorem[i] for i in sort_dates}
@@ -58,13 +60,15 @@ import os
 
 # cp_coq = list(map(lambda x: list(x),final_sort))
 
+# # Accumulate values 
 # for i in range(len(final_sort)) :
 #     (_, v) = final_sort[i]
 #     for j in range(i+1, len(final_sort)):
 #         cp_coq[j][1] += v
 
 # print(cp_coq)
-# # Lean
+
+# # Do same thing for Lean
 # with open('DataCollection/LeanTheorems.json') as f:
 #     # Load the JSON data into a Python dictionary
 #     theorem_data = json.load(f)
@@ -101,7 +105,7 @@ import os
 #     for j in range(i+1, len(final_sort)):
 #         cp_lean[j][1] += v
 
-# # Isabelle
+# # and Isabelle
 # with open('DataCollection/IsabelleTheorems.json') as f:
 #     # Load the JSON data into a Python dictionary
 #     theorem_data = json.load(f)
@@ -154,6 +158,7 @@ import os
 
 # print(cp_isa)
 
+# # Plotting Figure 1
 # fig, ax = plt.subplots()
 # lean_thm_x_axis = list(map(lambda x: x[0], cp_lean))
 # lean_thm_y_axis = list(map(lambda x: x[1], cp_lean))
@@ -174,6 +179,7 @@ import os
 
 # Figure 2
 
+# # This just displays all the different assistants in the same graph.
 # lean_commit_y_axis = lean_figures.y_values
 # coq_commit_y_axis = coq_figures.y_values
 # isabelle_commit_y_axis = isabelle_figures.y_values
@@ -206,6 +212,7 @@ import os
 # isa_names = isabelle_figures.names
 # isa_commits = isabelle_figures.commits_copy
 
+# Delete invalid entry
 # del isa_names[11]
 # del isa_commits[11]
 
@@ -222,132 +229,137 @@ import os
 # plt.legend(fontsize="xx-large")
 # plt.savefig('test.png', bbox_inches='tight')
 
-coq_pr_data = []
-for filename in os.listdir('DataCollection/coq-prs'):
-    # Check if the file is a JSON file
-    if filename.endswith(".json"):
-        # Read the JSON data from the file
-        with open(os.path.join('DataCollection/coq-prs', filename), "r") as f:
-            coq_pr = json.load(f)
-        # Append the JSON data to the list
-        coq_pr_data.extend(coq_pr)
+# # Figure 4
 
-coq_year_num = {}
-for element in coq_pr_data:
-    date = datetime.strptime(element['open_date'], "%Y-%m-%dT%H:%M:%S%z").year
-    coq_year_num[date] = coq_year_num.get(date, 0) + 1
+# # Add everything to a dictionary with Year::Eq1 for Coq
+# coq_pr_data = []
+# for filename in os.listdir('DataCollection/coq-prs'):
+#     # Check if the file is a JSON file
+#     if filename.endswith(".json"):
+#         # Read the JSON data from the file
+#         with open(os.path.join('DataCollection/coq-prs', filename), "r") as f:
+#             coq_pr = json.load(f)
+#         # Append the JSON data to the list
+#         coq_pr_data.extend(coq_pr)
 
-coq_issue_data = []
-for filename in os.listdir('DataCollection/coq-issues'):
-    # Check if the file is a JSON file
-    if filename.endswith(".json"):
-        filepath = os.path.join('DataCollection/coq-issues', filename)
-        try:
-            with open(filepath) as f:
-                data = json.load(f)
-                coq_issue_data.extend(data)
-        except json.JSONDecodeError:
-            pass
+# coq_year_num = {}
+# for element in coq_pr_data:
+#     date = datetime.strptime(element['open_date'], "%Y-%m-%dT%H:%M:%S%z").year
+#     coq_year_num[date] = coq_year_num.get(date, 0) + 1
 
-for element in coq_issue_data:
-    date = datetime.strptime(element['open_date'], "%Y-%m-%dT%H:%M:%S%z").year
-    coq_year_num[date] = coq_year_num.get(date, 0) + 1
+# coq_issue_data = []
+# for filename in os.listdir('DataCollection/coq-issues'):
+#     # Check if the file is a JSON file
+#     if filename.endswith(".json"):
+#         filepath = os.path.join('DataCollection/coq-issues', filename)
+#         try:
+#             with open(filepath) as f:
+#                 data = json.load(f)
+#                 coq_issue_data.extend(data)
+#         except json.JSONDecodeError:
+#             pass
 
-with open('DataCollection/CoqTheorems.json') as f:
-    # Load the JSON data into a Python dictionary
-    theorem_data = json.load(f)
+# for element in coq_issue_data:
+#     date = datetime.strptime(element['open_date'], "%Y-%m-%dT%H:%M:%S%z").year
+#     coq_year_num[date] = coq_year_num.get(date, 0) + 1
 
-for element in theorem_data:
-    # Check if the element is a dictionary
-    if isinstance(element, dict):
-        # Get the length of the dictionary (i.e., the number of key-value pairs)
-        sources = element['sources'][0]
-        if 'commits' in sources:
-            commits = sources['commits']
-            if len(commits) > 0:
-                for commit in commits:
-                    date = datetime.strptime(commit['date'], "%Y-%m-%dT%H:%M:%S%z").year
-                    coq_year_num[date] = coq_year_num.get(date, 0) + 1
-    else:
-        # If it's not a dictionary, print an error message
-        print("Each element in the JSON file must be a dictionary.")
+# with open('DataCollection/CoqTheorems.json') as f:
+#     # Load the JSON data into a Python dictionary
+#     theorem_data = json.load(f)
 
-# print(coq_year_num)
+# for element in theorem_data:
+#     # Check if the element is a dictionary
+#     if isinstance(element, dict):
+#         # Get the length of the dictionary (i.e., the number of key-value pairs)
+#         sources = element['sources'][0]
+#         if 'commits' in sources:
+#             commits = sources['commits']
+#             if len(commits) > 0:
+#                 for commit in commits:
+#                     date = datetime.strptime(commit['date'], "%Y-%m-%dT%H:%M:%S%z").year
+#                     coq_year_num[date] = coq_year_num.get(date, 0) + 1
+#     else:
+#         # If it's not a dictionary, print an error message
+#         print("Each element in the JSON file must be a dictionary.")
 
-lean_pr_data = []
-with open('DataCollection/leanprover-community_lean_PullRequests.json') as f_lean_pr:
-    lean_pr = json.load(f_lean_pr)
-    lean_pr_data.extend(lean_pr)
+# # print(coq_year_num)
 
-with open('DataCollection/leanprover-community_mathlib_PullRequests.json') as f_mathlib_is:
-    # Load the JSON data into a Python dictionary
-    mathlib_prs = json.load(f_mathlib_is)
-    lean_pr_data.extend(mathlib_prs)
+# # Add everything to a dictionary with Year::Eq1 for Lean 
+# lean_pr_data = []
+# with open('DataCollection/leanprover-community_lean_PullRequests.json') as f_lean_pr:
+#     lean_pr = json.load(f_lean_pr)
+#     lean_pr_data.extend(lean_pr)
 
-lean_issue_data = []
+# with open('DataCollection/leanprover-community_mathlib_PullRequests.json') as f_mathlib_is:
+#     # Load the JSON data into a Python dictionary
+#     mathlib_prs = json.load(f_mathlib_is)
+#     lean_pr_data.extend(mathlib_prs)
 
-with open('DataCollection/leanprover-community_lean_Issues.json') as f_lean_is:
-    # Load the JSON data into a Python dictionary
-    lean_issues = json.load(f_lean_is)
-    lean_issue_data.extend(lean_issues)
+# lean_issue_data = []
 
-with open('DataCollection/leanprover-community_mathlib_Issues.json') as f_mathlib_is:
-    # Load the JSON data into a Python dictionary
-    mathlib_issues = json.load(f_mathlib_is)
-    lean_issue_data.extend(mathlib_issues)
+# with open('DataCollection/leanprover-community_lean_Issues.json') as f_lean_is:
+#     # Load the JSON data into a Python dictionary
+#     lean_issues = json.load(f_lean_is)
+#     lean_issue_data.extend(lean_issues)
 
-lean_year_num = {}
-for element in lean_pr_data:
-    date = datetime.strptime(element['open_date'], "%Y-%m-%dT%H:%M:%S%z").year
-    lean_year_num[date] = lean_year_num.get(date, 0) + 1
-for element in lean_issue_data:
-    date = datetime.strptime(element['open_date'], "%Y-%m-%dT%H:%M:%S%z").year
-    lean_year_num[date] = lean_year_num.get(date, 0) + 1
+# with open('DataCollection/leanprover-community_mathlib_Issues.json') as f_mathlib_is:
+#     # Load the JSON data into a Python dictionary
+#     mathlib_issues = json.load(f_mathlib_is)
+#     lean_issue_data.extend(mathlib_issues)
 
-with open('DataCollection/LeanTheorems.json') as f:
-    # Load the JSON data into a Python dictionary
-    theorem_data = json.load(f)
+# lean_year_num = {}
+# for element in lean_pr_data:
+#     date = datetime.strptime(element['open_date'], "%Y-%m-%dT%H:%M:%S%z").year
+#     lean_year_num[date] = lean_year_num.get(date, 0) + 1
+# for element in lean_issue_data:
+#     date = datetime.strptime(element['open_date'], "%Y-%m-%dT%H:%M:%S%z").year
+#     lean_year_num[date] = lean_year_num.get(date, 0) + 1
 
-for element in theorem_data:
-    # Check if the element is a dictionary
-    if isinstance(element, dict):
-        # Get the length of the dictionary (i.e., the number of key-value pairs)
-        sources = element['sources'][0]
-        if 'commits' in sources:
-            commits = sources['commits']
-            if len(commits) > 0:
-                for commit in commits:
-                    date = datetime.strptime(commit['date'], "%Y-%m-%dT%H:%M:%S%z").year
-                    lean_year_num[date] = lean_year_num.get(date, 0) + 1
-    else:
-        # If it's not a dictionary, print an error message
-        print("Each element in the JSON file must be a dictionary.")
+# with open('DataCollection/LeanTheorems.json') as f:
+#     # Load the JSON data into a Python dictionary
+#     theorem_data = json.load(f)
 
-# print(lean_year_num)
+# for element in theorem_data:
+#     # Check if the element is a dictionary
+#     if isinstance(element, dict):
+#         # Get the length of the dictionary (i.e., the number of key-value pairs)
+#         sources = element['sources'][0]
+#         if 'commits' in sources:
+#             commits = sources['commits']
+#             if len(commits) > 0:
+#                 for commit in commits:
+#                     date = datetime.strptime(commit['date'], "%Y-%m-%dT%H:%M:%S%z").year
+#                     lean_year_num[date] = lean_year_num.get(date, 0) + 1
+#     else:
+#         # If it's not a dictionary, print an error message
+#         print("Each element in the JSON file must be a dictionary.")
 
-coq_sort = list(coq_year_num.keys())
-coq_sort.sort()
-coq_sort = list({i: coq_year_num[i] for i in coq_sort}.items())
-coq_sort = list(map(lambda x: list(x), coq_sort))
+# # print(lean_year_num)
 
-lean_sort = list(lean_year_num.keys())
-lean_sort.sort()
-lean_sort = list({i: lean_year_num[i] for i in lean_sort}.items())
-lean_sort = list(map(lambda x: list(x), lean_sort))
+# # And now generate graph
+# coq_sort = list(coq_year_num.keys())
+# coq_sort.sort()
+# coq_sort = list({i: coq_year_num[i] for i in coq_sort}.items())
+# coq_sort = list(map(lambda x: list(x), coq_sort))
 
-print(coq_sort)
-print(lean_sort)
+# lean_sort = list(lean_year_num.keys())
+# lean_sort.sort()
+# lean_sort = list({i: lean_year_num[i] for i in lean_sort}.items())
+# lean_sort = list(map(lambda x: list(x), lean_sort))
 
-coq_years = list(map(lambda x : x[0], coq_sort))
-coq_rate = list(map(lambda x : x[1], coq_sort))
-lean_years = list(map(lambda x : x[0], lean_sort))
-lean_rate = list(map(lambda x : x[1], lean_sort))
+# print(coq_sort)
+# print(lean_sort)
 
-fig, ax = plt.subplots()
+# coq_years = list(map(lambda x : x[0], coq_sort))
+# coq_rate = list(map(lambda x : x[1], coq_sort))
+# lean_years = list(map(lambda x : x[0], lean_sort))
+# lean_rate = list(map(lambda x : x[1], lean_sort))
 
-ax.plot(coq_years, coq_rate, label="Coq", color="red")
-ax.plot(lean_years, lean_rate, label="Lean", color="blue")
-ax.set_xlabel("Year")
-ax.set_ylabel("Rate of Growth")
-ax.legend(fontsize="xx-large")
-plt.show()
+# fig, ax = plt.subplots()
+
+# ax.plot(coq_years, coq_rate, label="Coq", color="red")
+# ax.plot(lean_years, lean_rate, label="Lean", color="blue")
+# ax.set_xlabel("Year")
+# ax.set_ylabel("Rate of Growth")
+# ax.legend(fontsize="xx-large")
+# plt.show()
