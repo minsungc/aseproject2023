@@ -4,6 +4,7 @@ import numpy as np
 import matplotlib.dates as mdates
 from datetime import datetime
 from matplotlib.dates import DateFormatter
+import adjustText as adj
 import os
 
 # Open the JSON file
@@ -31,8 +32,9 @@ for element in theorem_data:
         print("Each element in the JSON file must be a dictionary.")
 # Convert date strings (e.g. 2014-10-18) to datetime
 dates = [datetime.strptime(d, "%Y-%m-%dT%H:%M:%S%z") for d in last_commit_date]
+
 # Choose some nice levels
-levels = np.tile([-5, 5, -3, 3, -1, 1],
+levels = np.tile([-10, 10, -5, 5, -1, 1],
                  int(np.ceil(len(dates)/6)))[:len(dates)]
 
 # Create figure and plot a stem plot with the date
@@ -40,7 +42,7 @@ fig, ax = plt.subplots(figsize=(14, 4), layout="constrained")
 ax.set(title="Coq theorems latest activity timeline")
 
 ax.vlines(dates, 0, levels, color="tab:red")  # The vertical stems.
-ax.plot(dates, np.zeros_like(dates), "-o",
+ax.plot(dates, np.zeros_like(dates),
         color="k", markerfacecolor="w")  # Baseline and markers on it.
 
 # annotate lines
@@ -97,8 +99,6 @@ counts = {}
 for date in dates:
     year_month = date.strftime("%Y-%m")
     if year_month in counts:
-        if counts[year_month] > 150 :
-            continue
         counts[year_month] += 1
     else:
         counts[year_month] = 1
@@ -172,13 +172,11 @@ for date in pull_dates:
     year = date.strftime("%Y")
     if year in pull_counts:
         pull_counts[year] += 1
-        print('incremented')
     else:
         pull_counts[year] = 1
 for date in merge_dates:
     year = date.strftime("%Y")
     if year in merge_counts:
-        print('incremented')
         merge_counts[year] += 1
     else:
         merge_counts[year] = 1

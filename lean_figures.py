@@ -240,7 +240,6 @@ issue_counts = {}
 
 for date in issues_dates:
     year = date.strftime("%Y")
-    print(year)
     if year in issue_counts:
         # print('issue incremented\n')
         issue_counts[year] = issue_counts.get(year, 0) + 1
