@@ -60,7 +60,7 @@ ax.yaxis.set_visible(False)
 ax.spines[["left", "top", "right"]].set_visible(False)
 
 ax.margins(y=0.3)
-plt.show()
+# plt.show()
 
 #################################
 #### Commit Counts per Therem ###
@@ -72,7 +72,7 @@ plt.figure(figsize=(15, 3))
 plt.scatter(names, commits)
 plt.suptitle('Isabelle Commit Counts per Therem\n')
 plt.title('\nTheorem 41 excluded as outlier', fontsize = 6)
-plt.show()
+# plt.show()
 
 #################################
 #### Number of Commits over time ###
@@ -118,7 +118,7 @@ ax.xaxis.set_major_formatter(date_formatter)
 ax.set_xlabel("Year")
 ax.set_ylabel("Number of Commits")
 ax.set(title= "Isabelle number of commits per year")
-plt.show()
+# plt.show()
 
 #################################
 #### all pull requests and merged pull requests###
@@ -190,7 +190,7 @@ ax.set_xlabel("Year")
 ax.set_ylabel("Number of Pull Requests")
 ax.set(title= "Isabelle all pull requests and merged pull requests per year")
 ax.legend()
-plt.show()
+# plt.show()
 
 # Create a pie chart with the counts
 labels = ["Open", "Closed", "Merged"]
@@ -201,4 +201,4 @@ fig, ax = plt.subplots()
 ax.pie(sizes, explode=explode, labels=labels, colors=colors, autopct="%1.1f%%", startangle=90)
 ax.axis("equal")  # Equal aspect ratio ensures that pie is drawn as a circle.
 ax.set_title("Isabelle Pull Request State")
-plt.show()
+# plt.show()
