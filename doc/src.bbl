@@ -1,0 +1,111 @@
+%%% -*-BibTeX-*-
+%%% Do NOT edit. File created by BibTeX with style
+%%% ACM-Reference-Format-Journals [18-Jan-2012].
+
+\begin{thebibliography}{6}
+
+%%% ====================================================================
+%%% NOTE TO THE USER: you can override these defaults by providing
+%%% customized versions of any of these macros before the \bibliography
+%%% command.  Each of them MUST provide its own final punctuation,
+%%% except for \shownote{}, \showDOI{}, and \showURL{}.  The latter two
+%%% do not use final punctuation, in order to avoid confusing it with
+%%% the Web address.
+%%%
+%%% To suppress output of a particular field, define its macro to expand
+%%% to an empty string, or better, \unskip, like this:
+%%%
+%%% \newcommand{\showDOI}[1]{\unskip}   % LaTeX syntax
+%%%
+%%% \def \showDOI #1{\unskip}           % plain TeX syntax
+%%%
+%%% ====================================================================
+
+\ifx \showCODEN    \undefined \def \showCODEN     #1{\unskip}     \fi
+\ifx \showDOI      \undefined \def \showDOI       #1{#1}\fi
+\ifx \showISBNx    \undefined \def \showISBNx     #1{\unskip}     \fi
+\ifx \showISBNxiii \undefined \def \showISBNxiii  #1{\unskip}     \fi
+\ifx \showISSN     \undefined \def \showISSN      #1{\unskip}     \fi
+\ifx \showLCCN     \undefined \def \showLCCN      #1{\unskip}     \fi
+\ifx \shownote     \undefined \def \shownote      #1{#1}          \fi
+\ifx \showarticletitle \undefined \def \showarticletitle #1{#1}   \fi
+\ifx \showURL      \undefined \def \showURL       {\relax}        \fi
+% The following commands are used for tagged output and should be
+% invisible to TeX
+\providecommand\bibfield[2]{#2}
+\providecommand\bibinfo[2]{#2}
+\providecommand\natexlab[1]{#1}
+\providecommand\showeprint[2][]{arXiv:#2}
+
+\bibitem[\protect\citeauthoryear{Buzzard}{Buzzard}{2020}]%
+        {buzzard_2020}
+\bibfield{author}{\bibinfo{person}{Kevin Buzzard}.}
+  \bibinfo{year}{2020}\natexlab{}.
+\newblock \bibinfo{title}{Liquid tensor experiment}.
+\newblock
+\newblock
+\urldef\tempurl%
+\url{https://xenaproject.wordpress.com/2020/12/05/liquid-tensor-experiment/}
+\showURL{%
+\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{de~Moura, Kong, Avigad, Van~Doorn, and von
+  Raumer}{de~Moura et~al\mbox{.}}{2015}]%
+        {de2015lean}
+\bibfield{author}{\bibinfo{person}{Leonardo de Moura}, \bibinfo{person}{Soonho
+  Kong}, \bibinfo{person}{Jeremy Avigad}, \bibinfo{person}{Floris Van~Doorn},
+  {and} \bibinfo{person}{Jakob von Raumer}.} \bibinfo{year}{2015}\natexlab{}.
+\newblock \showarticletitle{The Lean theorem prover (system description)}. In
+  \bibinfo{booktitle}{\emph{Automated Deduction-CADE-25: 25th International
+  Conference on Automated Deduction, Berlin, Germany, August 1-7, 2015,
+  Proceedings 25}}. Springer, \bibinfo{pages}{378--388}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Green}{Green}{1981}]%
+        {green1981application}
+\bibfield{author}{\bibinfo{person}{Cordell Green}.}
+  \bibinfo{year}{1981}\natexlab{}.
+\newblock \showarticletitle{Application of theorem proving to problem solving}.
+\newblock In \bibinfo{booktitle}{\emph{Readings in Artificial Intelligence}}.
+  \bibinfo{publisher}{Elsevier}, \bibinfo{pages}{202--222}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Hunt~Jr}{Hunt~Jr}{1994}]%
+        {hunt1994fm8501}
+\bibfield{author}{\bibinfo{person}{Warren~A Hunt~Jr}.}
+  \bibinfo{year}{1994}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{FM8501: A verified microprocessor}}.
+\newblock \bibinfo{publisher}{Springer}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Knobelsdorf, Frede, B{\"o}hne, and
+  Kreitz}{Knobelsdorf et~al\mbox{.}}{2017}]%
+        {knobelsdorf2017theorem}
+\bibfield{author}{\bibinfo{person}{Maria Knobelsdorf},
+  \bibinfo{person}{Christiane Frede}, \bibinfo{person}{Sebastian B{\"o}hne},
+  {and} \bibinfo{person}{Christoph Kreitz}.} \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{Theorem provers as a learning tool in theory of
+  computation}. In \bibinfo{booktitle}{\emph{Proceedings of the 2017 ACM
+  Conference on International Computing Education Research}}.
+  \bibinfo{pages}{83--92}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Wiedijk}{Wiedijk}{[n.d.]}]%
+        {wiedijk}
+\bibfield{author}{\bibinfo{person}{Freek Wiedijk}.}
+  \bibinfo{year}{[n.d.]}\natexlab{}.
+\newblock \bibinfo{title}{Formalizing 100 Theorems}.
+\newblock
+\newblock
+\urldef\tempurl%
+\url{https://www.cs.ru.nl/~freek/100/}
+\showURL{%
+\tempurl}
+
+
+\end{thebibliography}

@@ -24,8 +24,9 @@ for element in theorem_data:
         if 'commits' in sources:
             commit = sources['commits']
             count = len(commit)
-            commits.append(count)
-            names.append(element['theorem_number'])
+            if count < 300:
+                commits.append(count)
+                names.append(element['theorem_number'])
             if len(commit) > 0:
                 last_commit_date.append(commit[len(commit) - 1]['date'])
     else:
@@ -69,7 +70,8 @@ ax.margins(y=0.3)
 #### Commit Counts per Therem ###
 #################################
 
-# These are here because of a JSON bug in theorem 96 of Lean.
+# cache commits
+commits_copy = commits
 # # Plot a histogram of the lengths using matplotlib
 plt.figure(figsize=(15, 3))
 plt.scatter(names, commits)
@@ -202,9 +204,9 @@ ax.bar(pull_counts.keys(), y_pull_values, label="All Pull Requests")
 ax.bar(pull_counts.keys(), y_merge_values, label="Merged Pull Requests")
 ax.set_xlabel("Year")
 ax.set_ylabel("Number of Pull Requests")
-ax.set(title= "Coq all pull requests and merged pull requests per year")
+# ax.set(title= "Coq all pull requests and merged pull requests per year")
 ax.legend()
-# plt.show()
+plt.show()
 
 # Create a pie chart with the counts
 labels = ["Open", "Closed", "Merged"]
@@ -214,8 +216,8 @@ explode = (0.1, 0.1, 0.1)  # explode the Open slice
 fig, ax = plt.subplots()
 ax.pie(sizes, explode=explode, labels=labels, colors=colors, autopct="%1.1f%%", startangle=90)
 ax.axis("equal")  # Equal aspect ratio ensures that pie is drawn as a circle.
-ax.set_title("Coq Pull Request State")
-# plt.show()
+# ax.set_title("Coq Pull Request State")
+plt.show()
 
 #################################
 #### Issues###
@@ -271,5 +273,5 @@ explode = (0.1, 0.1)  # explode the Open slice
 fig, ax = plt.subplots()
 ax.pie(sizes, explode=explode, labels=labels, colors=colors, autopct="%1.1f%%", startangle=90)
 ax.axis("equal")  # Equal aspect ratio ensures that pie is drawn as a circle.
-ax.set_title("Coq Issues State")
-# plt.show()
+# ax.set_title("Coq Issues State")
+plt.show()

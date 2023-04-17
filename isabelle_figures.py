@@ -67,6 +67,8 @@ ax.margins(y=0.3)
 #### Commit Counts per Therem ###
 #################################
 
+commits_copy = commits
+
 # These are here because of a JSON bug in theorem 96 of Lean.
 # # Plot a histogram of the lengths using matplotlib
 plt.figure(figsize=(15, 3))

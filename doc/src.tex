@@ -135,11 +135,11 @@
 
 \section{Introduction}
 
-Proof assistants (also known as interactive theorem provers) are programming languages with the primary purpose of providing computational meaning to mathematical proof through code. The first proof assistants, developed over fifty years ago, were designed to help reason about the correctness of software and hardware through mathematical abstraction. However, as proof assistants became more expressive and user-friendly, they have gained traction in numerous fields, including formal methods, artificial intelligence, and computer science education \TODO{add citation.}.
+Proof assistants (also known as interactive theorem provers) are programming languages with the primary purpose of providing computational meaning to mathematical proof through code \cite{de2015lean}. The first proof assistants, developed over fifty years ago, were designed to help reason about the correctness of software and hardware through mathematical abstraction. However, as proof assistants became more expressive and user-friendly, they have gained traction in numerous fields, including formal methods, artificial intelligence, and computer science education \cite{green1981application,hunt1994fm8501,knobelsdorf2017theorem}.
 
 However, over the past 20 years, proof assistants garnered attention from communities beyond computer science. In particular, the mathematics community took interests in proof assistants with their potential to bridge software development and mathematical proof. This potential has been realized through multiple open-source, well-documented libraries of formalized proofs as programs. Although there have been many such libraries over time, the predominant ones today are written in three languages: Lean, Coq, and Isabelle/HOL.
 
-\textbf{Lean} has been the focal point of math library development in the past five years, gaining the attention of prominent mathematicians by demonstrating its ability to prove research-level mathematics \TODO{add citation.}. Its math library, known as \mathlib, has been open-sourced on GitHub under an Apache license. It has extremely rigid conventions for contributing, including guidelines on style, naming, commit messages, and pull request labeling. 
+\textbf{Lean} has been the focal point of math library development in the past five years, gaining the attention of prominent mathematicians by demonstrating its ability to prove research-level mathematics \cite{buzzard_2020}. Its math library, known as \mathlib, has been open-sourced on GitHub under an Apache license. It has extremely rigid conventions for contributing, including guidelines on style, naming, commit messages, and pull request labeling. 
 
 \textbf{Coq} is one of the most widely-used proof assistants in computer science today. However, its math library is not centralized like \mathlib. Instead, it offers a \textit{loosely federated} list of open-source GitHub repositories. Many of these repositories are under the same GitHub organizations, for example \texttt{math-comp} or \texttt{coq-community}, but not all of them are and their interdependence is not obvious.
 
@@ -155,9 +155,9 @@ It is clear that each of these proof assistants and their math libraries have di
 
 \section{Project Results}
 
-\textit{Methodology}
+\subsection{Methodology}
 
-To investigate research problem \ref{r1}, we used Freek Wiedijk's \textit{list of 100 theorems}\TODO{add citation.}, an online list of ``top 100'' mathematical theorems that proof assistants to attempt to formalize. 
+To investigate research problem \ref{r1}, we used Freek Wiedijk's \textit{list of 100 theorems}\cite{wiedijk}, an online list of ``top 100'' mathematical theorems that proof assistants to attempt to formalize, which we will refer to as the \textit{100 Theorems list}.
 
 We first gathered exactly what proportion of the 100 theorems have been formalized fully in the respective proof assistants. Then, we used \texttt{Octokit} to collect data of relevant commits to the file containing each theorem. For Lean, we collected data only from the \textit{mathlib} repository, where all the proofs were held. For Coq, we looked at 30 different repositories where the proofs were held. For Isabelle, we either looked at the \textit{mirror-afp-2022} repository or had to take data directly from the \textit{Archive of Formal Proofs} website.
 
@@ -174,45 +174,122 @@ To investigate research problem \ref{r2}, we again used \texttt{Octokit} to take
   \item the proportion of pull requests merged to the main or master branch, closed, and still open,
   \item the proportion of issues opened or closed,
   \item the rate of growth of the repositories, measured as
-  \begin{equation}
-    \frac{\#\text{ of commits}+\#\text{ of opened PRs}+\#\text{ of opened issues}}{\text{month}}
+  \begin{equation}\label{eq1}
+    \#\text{ of commits}+\#\text{ of opened PRs}+\#\text{ of opened issues},
   \end{equation} 
   \item the general type of pull request and issues seen in math repositories, such as suggestions, bugfixes, or new additions.
 \end{itemize}
 
 With this, we present our results.
 
-\textit{Results for research problem \ref{r1}}
+\subsection{Results for research problem \ref{r1}}
 
-We first observed that Lean is the focal point of math library development in the past five years, Isabelle actually has the most theorems proved on the 100 Theorems list, with 87. Coq follows with 79, and Lean is actually the least populated with 76. Thus, in objective number of theorems proved, Lean is actually not the dominant proof assistant for formalized math. 
+We first observed that although Lean is the focal point of math library development in the past five years, Isabelle actually has the most theorems proved on the 100 Theorems list, with 87. Coq follows with 79, and Lean is actually the least populated with 76. Thus, in objective number of theorems proved, Lean is actually not the dominant proof assistant for formalized math. 
 
-However, the pace at which Lean's userbase is contributing to its codebase in the past 5 years far outpaces that of Coq or Isabelle. We see in Figure 1 that in the past five years Lean has significantly more commits to its main repositories than both Coq and Isabelle. Before that Isabelle had a commanding lead, although its activity seems to have diminished with the emergence of Lean. However, Isabelle's frequent activity in the decades preceding Lean explains its 87 theorems proven out of the 100 theorems list.
+\begin{figure}[H]
+  \includegraphics[scale=0.5]{thm_dev.png}
+  \caption{Number of theorems on the 100 Theorems list proven via Lean/Coq/Isabelle over time.}
+  \label{thms over time}
+\end{figure}
+
+However, Figure \ref{thms over time} demonstrates that Lean is catching up fast. Isabelle and Coq's main advantage is the longer history of development, which lends itself easily to more code. Furthermore, we see that Lean's \mathlib is growing significantly faster in the past five years than both Coq and Isabelle's libraries, with contributions even as recent as this year, which both Coq and Isabelle lack.
+
+\begin{figure}[H]
+  \includegraphics[scale=0.25]{test.png}
+  \caption{Number of commits per proven theorem on the \textit{100 Theorems} list.}
+  \label{number of commits}
+\end{figure}
+
+Figure \ref{number of commits} demonstrates that, although Coq has more theorems proven than Lean, per theorem it only has few commits. On the other hand, Isabelle seems to have many theorems with hundreds of commits to the source file. In general, we see little correlation between the different proof assistants and the number of commits to prove each theorem on the 100 Theorems list. 
+
+In general, the commit contents were mostly proofs of the theorem and related mathematics. We observed that often the theorems themselves are only consequences of an underlying theory, and not a standalone goal. This can be likened to mathematics, where usually theorems are consequences of studying an underlying theory and not a goal to build towards. Besides proofs, other commit contents included dependency updates, refactoring of code, and comments to explain the proofs in English. We leave it to future work for a more sophisticated analysis of commit contents via code differences.
+
+\subsection{Results for research problem \ref{r2}}
+
+We observed in Figure \ref{thms over time} that Lean, in the context of math formalization, has exploded in growth over the past five years. We attempt to characterize this growth using different metrics derivable from looking at the history of Git activity for the proof assistants and their math libraries.
 
 \begin{figure}[H]
   \includegraphics[scale=0.5]{compare_commits.png}
   \caption{Number of commits per year for Lean, Coq, and Isabelle.}
+  \label{commits per year}
 \end{figure}
 
+We see in Figure \ref{commits per year} that in the past five years Lean has significantly more commits to its main repositories than both Coq and Isabelle. Before that, Isabelle had a commanding lead, although its activity seems to have diminished with the emergence of Lean. The slight increase in Isabelle activity in 2012-2016 corresponds to a large growth in proven theorems in Figure \ref{thms over time} over the same time frame.
 
-Figure 1 also shows two outlier points for Coq: there are two points, occuring at August and September 2014, where the number of commits surpasses 300. Most of these commits were from one user and their solo project to prove Puiseux's Theorem, one of the theorems on the 100 Theorems list. Interestingly, none of the commit messages for these commits seem to have relevant information--the messages are simply \texttt{--}.
+Figure \ref{commits per year} also shows two outlier points for Coq: there are two points, occuring at August and September 2014, where the number of commits surpasses 300. Most of these commits were from one user and their solo project to prove Puiseux's Theorem, one of the theorems on the 100 Theorems list. Interestingly, none of the commit messages for these commits seem to have relevant information--the messages are simply \texttt{--}.
+
+\begin{figure}[H]
+  \includegraphics[scale=0.5]{rate.png}
+  \caption{Rate of growth for Coq and Lean via Equation \ref{eq1}}
+  \label{rate of growth}
+\end{figure}
+
+Figure \ref{rate of growth}, which shows code growth by Equation \ref{eq1} per year, reaffirms similar conclusions to Figure \ref{commits per year}. However, we noticed that Isabelle does not have a standard system for pull requests and issues. Instead, any changes in its library must be done through a form submitted to TU Munich, where Isabelle development is centered at. As such, the following analysis of pull request and issue will be on Lean and Coq exclusively. 
+
+\begin{figure}[H]
+  \begin{subfigure}[b]{0.45\columnwidth}
+    \includegraphics[width=\linewidth]{coq_prs_sate.png}
+    \caption{Coq pull requests.}
+    \label{coq prs}
+  \end{subfigure}
+  \hfill %%
+  \begin{subfigure}[b]{0.45\columnwidth}
+    \includegraphics[width=\linewidth]{Lean_pull_requests_state.png}
+    \caption{Lean pull requests.}
+    \label{lean prs}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.45\columnwidth}
+    \includegraphics[width=\linewidth]{coq_isuses_state.png}
+    \caption{Coq issues.}
+    \label{coq issues}
+  \end{subfigure}
+  \hfill %%
+  \begin{subfigure}[b]{0.45\columnwidth}
+    \includegraphics[width=\linewidth]{lean_isuses_state.png}
+    \caption{Lean issues}
+    \label{lean prs}
+  \end{subfigure}
+  \caption{The state of pull requests and issues for Coq and Lean. Red=closed, Green=open, Yellow=merged.}
+  \label{circles}
+\end{figure}
+
+Figure \ref{circles} demonstrates that how Coq and Lean handle issues is relatively similar by proportion. It is interesting to note that although Lean arguably has more stringent style and pull request guidelines than Coq, its proportion of merged pull requests is slightly more than Coq. Indeed, Figure \ref{bars} reinforces the conclusion that although Coq and Lean are different in many ways, they follow similar open source guidelines.
+
+\begin{figure}
+\begin{subfigure}[b]{0.8\columnwidth}
+  \includegraphics[width=\linewidth]{coq_mergedvsall.png}
+  \caption{Coq.}
+  \label{fig:1}
+\end{subfigure}
+\hfill %%
+\begin{subfigure}[b]{0.8\columnwidth}
+  \includegraphics[width=\linewidth]{lean_mergedvsall.png}
+  \caption{Lean.}
+  \label{fig:2}
+\end{subfigure}
+\caption{All vs. merged pull requests for Coq and Lean.}
+\label{bars}
+\end{figure}
+
 
 
 \section{Project Challenges}
 
-\textit{Limits in project scope}
+\subsection{Limits in project scope}
 
 The original goal of this project was to investigate proof assistants from four different math libraries in addition to Lean, Coq, and Isabelle. However, this proved challenging as many proof assistants predate GitHub and modern software engineering practice, including style and version control. In particular, we observed that some prominent theorems according to the 100 Theorems list, such as Mizar and Metamath, only host proofs on the proof assistant website itself. We chose to limit the scope of our project to the most popular math libraries hosted on GitHub. However, we do believe that scraping the websites for relevant statistics about the proofs is worthwhile; we leave it to future work beyond the time frame of this project.
 
 An additional original goal of the project was to investigate the use cases of each proof assistant over time by examining what type of projects on GitHub were written in the language. However, this was difficult to do considering the time constraint. Not only does the GitHub rate limit affect the speed at which we can gather information about individual projects, but it would also be time-consuming to parse the information and categorize it into appropriate metrics for use cases. As such, we also delegate this goal to future work.
 
-\textit{Additional Challenges}
+\subsection{Challenges with data collection}
 
 Our original methodological plan was to use GHTorrent to collect the github metadata for each math library explored. However, GHTorrent was no longer maintained at the start of this project and we were instead forced to use Octokit requests to the GitHub Rest API for data mining. Exploring pull requests and issues with the Rest API required additional queries to be made to the API as metadata results were often in the form of API links. The rate limit of 1000 requests per hour imposed by the Rest API slowed progress significantly as Coq and Lean both had thousands of pull requests and issues. Our final mining implementation is able to acquire in-depth data on pull requests, issues, and commits from a repository, but may take multiple days to run.
 
-Our GitHub mining tool also originally assumed that each math library would use built-in Github conventions for tracking the status of pull requests. However, this was not the case for the Lean library, in which merges of all pull requests were handled by BORS, that merged code externally before committing it to the main branch, closing the pull request, and updating the title of the pull request to include “Merged by Bors” \TODO{Add citation}. The impact of BORS on pull request mining was that the status displayed by GitHub (merged, closed, or open) was not trustworthy. In order to discover which pull requests had actually been merged into the library, we had to check each pull request for BORS activity.
+Our GitHub mining tool also originally assumed that each math library would use built-in Github conventions for tracking the status of pull requests. However, this was not the case for the Lean library, in which merges of all pull requests were handled by BORS, that merged code externally before committing it to the main branch, closing the pull request, and updating the title of the pull request to include “Merged by Bors”. The impact of BORS on pull request mining was that the status displayed by GitHub (merged, closed, or open) was not trustworthy. In order to discover which pull requests had actually been merged into the library, we had to check each pull request for BORS activity.
 
 An additional challenge regarding the collection of the 100 theorems in Isabelle was that many of the links pointing to proofs in Isabelle were broken. We overcame this challenge by manually finding the source files for each of the 100 theorems proved in Isabelle.
 
-
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{src.bib}
 
 \end{document}

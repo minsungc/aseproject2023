@@ -70,6 +70,7 @@ ax.margins(y=0.3)
 # These are here because of a JSON bug in theorem 96 of Lean.
 names.append(96)
 commits.append(1)
+commits_copy = commits
 # # Plot a histogram of the lengths using matplotlib
 plt.figure(figsize=(15, 3))
 plt.scatter(names, commits)
@@ -127,9 +128,15 @@ ax.set(title= "Lean number of commits per year")
 #### all pull requests and merged pull requests###
 #################################
 
+lean_pr_data = []
 with open('DataCollection/leanprover-community_lean_PullRequests.json') as f_lean_pr:
+    lean_pr = json.load(f_lean_pr)
+    lean_pr_data.extend(lean_pr)
+
+with open('DataCollection/leanprover-community_mathlib_PullRequests.json') as f_mathlib_is:
     # Load the JSON data into a Python dictionary
-    lean_pr_data = json.load(f_lean_pr)
+    mathlib_prs = json.load(f_mathlib_is)
+    lean_pr_data.extend(mathlib_prs)
 
 pull_dates= []
 merge_dates= []
@@ -146,15 +153,18 @@ for element in lean_pr_data:
         merge_dates.append(datetime.strptime(element['open_date'], "%Y-%m-%dT%H:%M:%S%z"))
     elif element['state'] == 'closed':
         x = element['discussion']
+        getborsd = False
         for i in x :
             if i['author'] == 'bors[bot]' :
                 msg = i['comment']
                 txt = 'Pull request successfully merged into master.'
                 if os.path.commonprefix([msg,txt]) == txt :
+                    print("bors detected")
                     merged_count += 1
                     merge_dates.append(datetime.strptime(element['open_date'], "%Y-%m-%dT%H:%M:%S%z"))
-                    continue
-        closed_count += 1
+                    getborsd = True
+        if not(getborsd) :
+            closed_count += 1
 
 # Count the number of pull requests and merged pull requests per year
 pull_counts = {}
@@ -192,7 +202,7 @@ ax.bar(pull_counts.keys(), y_pull_values, label="All Pull Requests")
 ax.bar(pull_counts.keys(), y_merge_values, label="Merged Pull Requests")
 ax.set_xlabel("Year")
 ax.set_ylabel("Number of Pull Requests")
-ax.set(title= "Lean all pull requests and merged pull requests per year")
+# ax.set(title= "Lean all pull requests and merged pull requests per year")
 ax.legend()
 # plt.show()
 
@@ -204,8 +214,8 @@ explode = (0.1, 0.1, 0.1)  # explode the Open slice
 fig, ax = plt.subplots()
 ax.pie(sizes, explode=explode, labels=labels, colors=colors, autopct="%1.1f%%", startangle=90)
 ax.axis("equal")  # Equal aspect ratio ensures that pie is drawn as a circle.
-ax.set_title("Lean Pull Request State")
-# plt.show()
+# ax.set_title("Lean Pull Request State")
+plt.show()
 
 
 #################################
@@ -263,6 +273,6 @@ explode = (0.1, 0.1)  # explode the Open slice
 fig, ax = plt.subplots()
 ax.pie(sizes, explode=explode, labels=labels, colors=colors, autopct="%1.1f%%", startangle=90)
 ax.axis("equal")  # Equal aspect ratio ensures that pie is drawn as a circle.
-ax.set_title("Lean Issues State")
-# plt.show()
+# ax.set_title("Lean Issues State")
+plt.show()
 
