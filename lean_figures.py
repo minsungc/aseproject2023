@@ -47,6 +47,7 @@ ax.plot(dates, np.zeros_like(dates), "-o",
 for d, l, r in zip(dates, levels, names):
     ax.annotate(r, xy=(d, l),
                 xytext=(-3, np.sign(l)*3), textcoords="offset points",
+                rotation=90,
                 horizontalalignment="right",
                 verticalalignment="bottom" if l > 0 else "top")
 
