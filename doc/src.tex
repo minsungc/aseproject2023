@@ -152,32 +152,31 @@ It is clear that each of these proof assistants and their math libraries have di
     \item\label{r2} How has the popularity of contributing to theorem provers over time changed? Are there any factors we need to take into account to evaluate proof assistant software different than traditional software?
 \end{enumerate}
 
-
 \section{Project Results}
 
 \subsection{Methodology}
 
 To investigate research problem \ref{r1}, we used Freek Wiedijk's \textit{list of 100 theorems}\cite{wiedijk}, an online list of ``top 100'' mathematical theorems that proof assistants to attempt to formalize, which we will refer to as the \textit{100 Theorems list}.
 
-We first gathered exactly what proportion of the 100 theorems have been formalized fully in the respective proof assistants. Then, we used \texttt{Octokit} to collect data of relevant commits to the file containing each theorem. For Lean, we collected data only from the \textit{mathlib} repository, where all the proofs were held. For Coq, we looked at 30 different repositories where the proofs were held. For Isabelle, we either looked at the \textit{mirror-afp-2022} repository or had to take data directly from the \textit{Archive of Formal Proofs} website.
+We first gathered exactly what proportion of the 100 theorems have been formalized fully in the respective proof assistants. Then, we used \texttt{SimpleGit} to collect data of relevant commits to the file containing each theorem. For Lean, we collected data only from the \textit{mathlib} repository, where all the proofs were held. For Coq, we looked at 30 different repositories where the proofs were held. For Isabelle, we either looked at the \textit{mirror-afp-2022} repository or had to take data directly from the \textit{Archive of Formal Proofs} website.
 
 Using the data, we selected the following information:
 \begin{itemize}
-  \item when each theorem was proven,
-  \item which theorems required the most commits
-  \item and what type of commits--code refactoring, dependency updating, or simply writing new supporting definitions and lemmas--were typically made.
+ \item when each theorem was proven,
+ \item which theorems required the most commits
+ \item and what type of commits--code refactoring, dependency updating, or simply writing new supporting definitions and lemmas--were typically made.
 \end{itemize}
 
-To investigate research problem \ref{r2}, we again used \texttt{Octokit} to take data on pull requests and issues. However, this was only doable on Lean and Coq, as Isabelle does not have any pull requests or issues. Using the data, we selected the following information:
+To investigate the research problem \ref{r2}, we used \texttt{Octokit} to take data on pull requests and issues. However, this was only doable on Lean and Coq, as Isabelle does not have any pull requests or issues. We again used \texttt{SimpleGit} to collect data on commits. Using the data, we selected the following information:
 
 \begin{itemize}
-  \item the proportion of pull requests merged to the main or master branch, closed, and still open,
-  \item the proportion of issues opened or closed,
-  \item the rate of growth of the repositories, measured as
-  \begin{equation}\label{eq1}
-    \#\text{ of commits}+\#\text{ of opened PRs}+\#\text{ of opened issues},
-  \end{equation} 
-  \item the general type of pull request and issues seen in math repositories, such as suggestions, bugfixes, or new additions.
+ \item the proportion of pull requests merged to the main or master branch, closed, and still open,
+ \item the proportion of issues opened or closed,
+ \item the rate of growth of the repositories, measured as
+ \begin{equation}\label{eq1}
+   \#\text{ of commits}+\#\text{ of opened PRs}+\#\text{ of opened issues},
+ \end{equation}
+ \item the general type of pull request and issues seen in math repositories, such as suggestions, bugfixes, or new additions.
 \end{itemize}
 
 With this, we present our results.
