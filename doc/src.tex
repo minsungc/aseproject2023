@@ -172,6 +172,7 @@ To investigate the research problem \ref{r2}, we used \texttt{Octokit} to take d
 \begin{itemize}
  \item the proportion of pull requests merged to the main or master branch, closed, and still open,
  \item the proportion of issues opened or closed,
+ \item the number of unique contributors,
  \item the rate of growth of the repositories, measured as
  \begin{equation}\label{eq1}
    \#\text{ of commits}+\#\text{ of opened PRs}+\#\text{ of opened issues},
@@ -237,12 +238,35 @@ We see in Figure \ref{commits per year} that in the past five years Lean has sig
 Figure \ref{commits per year} also shows two outlier points for Coq: there are two points, occuring at August and September 2014, where the number of commits surpasses 300. Most of these commits were from one user and their solo project to prove Puiseux's Theorem, one of the theorems on the 100 Theorems list. Interestingly, none of the commit messages for these commits seem to have relevant information--the messages are simply "\texttt{--}".
 
 \begin{figure}[H]
+  \begin{subfigure}{\columnwidth}
+    \includegraphics[scale=0.5]{coq_commit_authors.png}
+    \caption{Number of unique Coq commit authors.}
+  \end{subfigure}
+  \begin{subfigure}{\columnwidth}
+    \includegraphics[scale=0.5]{lean_commits_authors.png}
+    \caption{Number of unique Lean commit authors.}
+  \end{subfigure}
+  \begin{subfigure}{\columnwidth}
+    \includegraphics[scale=0.5]{isabelle_commit_authors.png}
+    \caption{Number of unique Isabelle commit authors.}
+  \end{subfigure}
+  \caption{Number of unique authors contributing commits to languages and math libraries over time.}
+  \label{Commit authors}
+\end{figure}
+
+Figure \ref{Commit authors} shows how changes to the main language libraries for Lean and Isabelle has been done by a small number of individuals, but many more people have contributed to the Coq language. Interestingly, in recent years, more people have contributed to the Coq language than to the sum of the federated Coq libraries. This indicates that while the implementation of Coq theorem provers is spread out, the Coq community is more centralized than it appears.
+
+In contrast to Coq, the majority of recent contributors to Lean do not contribute to the Lean language and instead contribute to Lean libraries, such as Mathlib, as demonstrated in Figure \ref{Commit authors}. The Lean community is known for having strict contribution standards, but this does not appear to have affected the rapid increase in unique contributors to Mathlib.
+
+The Isabelle repository contains not only the Isabelle language, but also each of the Isabelle proofs and the Isabelle math library. Figure \ref{Commit authors} shows that there are less committers for Isabelle than for all of Coq or Lean. For each commit made to Isabelle, what proportion of the changes originate from an individual who is not the committer? How many individuals work on a single commit? How might an Isabelle newcomer become a committer? These questions should be explored in future work.
+
+\begin{figure}[H]
   \includegraphics[scale=0.5]{rate.png}
   \caption{Rate of growth for Coq and Lean via Equation \ref{eq1}}
   \label{rate of growth}
 \end{figure}
 
-Figure \ref{rate of growth}, which shows code growth by Equation \ref{eq1} per year, reaffirms similar conclusions to Figure \ref{commits per year}. However, we noticed that Isabelle does not have a standard system for pull requests and issues. Instead, any changes in its library must be done through a form submitted to TU Munich, where Isabelle development is centered at. As such, the following analysis of pull request and issue will be on Lean and Coq exclusively. 
+Figure \ref{rate of growth}, which shows code growth by Equation \ref{eq1} per year, reaffirms similar conclusions to Figure \ref{commits per year}. However, we noticed that Isabelle does not have a standard system for pull requests and issues. Instead, any changes in its library must be done through a form submitted to TU Munich, where Isabelle development is centered at. As such, the following analysis of pull requests and issues will be on Lean and Coq exclusively. 
 
 \begin{figure}[H]
   \begin{subfigure}{0.45\columnwidth}
@@ -290,7 +314,23 @@ Figure \ref{circles} demonstrates that how Coq and Lean handle issues is relativ
 \label{bars}
 \end{figure}
 
+\begin{figure}[H]
+\begin{subfigure}{0.8\columnwidth}
+  \includegraphics[width=\linewidth]{coq_ispr_authors.png}
+  \caption{Coq.}
+  \label{fig:1}
+\end{subfigure}
+\hfill %%
+\begin{subfigure}{0.8\columnwidth}
+  \includegraphics[width=\linewidth]{lean_ispr_authors.png}
+  \caption{Lean.}
+  \label{fig:2}
+\end{subfigure}
+\caption{Unique contributors to issues, pull requests, and related discussions in Coq and Lean}
+\label{authors}
+\end{figure}
 
+Figure \ref{authors} shows the decline in overall community involvement in Coq post-2020 and the rapid growth of the Lean community. The sharp decline in unique authors in 2023 is a result of the year not yet being complete for both languages. Similarly to Figure \ref{Commit authors}, more unique community members contribute to the language in Coq than the proof libraries and more unique community members contribute to Mathlib in Lean than the Lean language.
 
 \section{Project Challenges}
 
@@ -307,6 +347,16 @@ Our original methodological plan was to use GHTorrent to collect the github meta
 Our GitHub mining tool also originally assumed that each math library would use built-in Github conventions for tracking the status of pull requests. However, this was not the case for the Lean library, in which merges of all pull requests were handled by BORS, that merged code externally before committing it to the main branch, closing the pull request, and updating the title of the pull request to include “Merged by Bors”. The impact of BORS on pull request mining was that the status displayed by GitHub (merged, closed, or open) was not trustworthy. In order to discover which pull requests had actually been merged into the library, we had to check each pull request for BORS activity.
 
 An additional challenge regarding the collection of the 100 theorems in Isabelle was that many of the links pointing to proofs in Isabelle were broken. We overcame this challenge by manually finding the source files for each of the 100 theorems proved in Isabelle.
+
+\section{Conclusion}
+
+\subsection{Research Question 1}
+None of the math libraries studied had a proof for each of the \textit{100 theorems}. The development and contribution of proofs to math libraries is most likely a consequence of expanding library functionality than of a community desire to complete the \textit{100 theorems list}. Once completed, most proofs are not revisited, although there are some cases in which a new implementation of a proof is created due to expanding library capabilities. The number of proven theorems appears to be a good indicator of the state of overall library development.
+
+\subsection{Research Question 2}
+Historically, Isabelle was the most active community by measure of commits per year. However, the Coq community has always been more diverse with a greater number of individual contributors. Recently, Lean has surpassed both Coq and Isabelle for number of contributors and frequency of commits, but the overall popularity of contributing to theorem provers has also increased across communities. This may be caused by increased community accessibility through the use of GitHub. While the rigid conventions of the Lean community may be daunting to a potential new contributor, the quality of Lean documentation and contribution instructions may have lowered the barrier to entry into this community. 
+
+Proof assistant software has a long history, and a true exploration into community development must account for both modern and historic software engineering practices. The adoption, or lack thereof, of new software engineering tools by proof assistant communities has certainly affected the continued development of each community. Overall, communities working on proof assistant software in GitHub utilize GitHub tools such as pull requests, issues, and discussion in much of the same way as traditional software development communities.
 
 \bibliographystyle{ACM-Reference-Format}
 \bibliography{src.bib}
