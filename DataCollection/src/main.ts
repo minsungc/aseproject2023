@@ -18,12 +18,12 @@ async function main() {
     search.getISList('coq', 'coq', 'https://github.com/coq/coq.git')
 }
 
-// async function othermain() {
-//     //Language name and github token
-//     const com = new CommitGetter('Isabelle', 'isabelle-prover', 'mirror-isabelle', 'https://github.com/isabelle-prover/mirror-isabelle.git')
-//     await com.setup()
-//     await com.getCommits()
-// }
+async function othermain() {
+    //Language name and github token
+    const com = new CommitGetter('Coq', 'coq', 'coq', 'https://github.com/coq/coq.git')
+    await com.setup()
+    await com.getCommits()
+}
 
-main()
+othermain()
 
