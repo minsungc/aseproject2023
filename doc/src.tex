@@ -201,9 +201,9 @@ However, Figure \ref{thms over time} demonstrates that Lean is catching up fast.
 
 Figure \ref{number of commits} demonstrates that, although Coq has more theorems proven than Lean, per theorem it only has few commits. On the other hand, Isabelle seems to have many theorems with hundreds of commits to the source file. In general, we see little correlation between the different proof assistants and the number of commits to prove each theorem on the 100 Theorems list. 
 
-We see in Figure \ref{historical commits} that there is also little correlation between the different proof assistants and the order in which the theorems were proven. However, we see a common pattern in all three proof assistants: there are times when several theorems are proven in a very short span of time. We believe this is due to similarities in the definitions and proof techniques used in the theorems rather than pure coincedence.
+We see in Figure \ref{historical commits} that there is also little correlation between the different proof assistants and the order in which the theorems were proven. However, we see a common pattern in all three proof assistants: there are times when several theorems are proven in a very short span of time. We believe this is due to similarities in the definitions and proof techniques used in the theorems rather than pure coincidence. Additionally, both Lean and Coq have instances of the same proof being proven in multiple implementations. We believe that this is due to the nature of the languages as a tool where the demonstration and exploration of a new capability or strategy is valued.
 
-In general, the commit contents were mostly proofs of the theorem and related mathematics. We observed that often the theorems themselves are only consequences of an underlying theory, and not a standalone goal. This can be likened to mathematics, where usually theorems are consequences of studying an underlying theory and not a goal to build towards. We believe that this is also the reason why there is little correlation in the order in which theorems were proven. Besides proofs, other commit contents included dependency updates, refactoring of code, and comments to explain the proofs in English. We leave it to future work for a more sophisticated analysis of commit contents via code differences.
+In general, the commit contents were mostly proofs of the theorem and related mathematics. We observed that often the theorems themselves are only consequences of an underlying theory, and not a standalone goal. This can be likened to mathematics, where usually theorems are consequences of studying an underlying theory and not a goal to build towards. We believe that this is also the reason why there is little correlation in the order in which theorems were proven and why theorems are proven multiple times. Besides proofs, other commit contents included dependency updates, refactoring of code, and comments to explain the proofs in English. We leave it to future work for a more sophisticated analysis of commit contents via code differences.
 
 \begin{figure}[H]
   \begin{subfigure}{\columnwidth}
@@ -218,7 +218,7 @@ In general, the commit contents were mostly proofs of the theorem and related ma
     \includegraphics[width=\linewidth]{isabelle_theorems_timeline.png}
     \caption{Isabelle theorem timeline.}
   \end{subfigure}
-  \caption{Theorems proved by Coq/Lean/Isabelle in chronological order.}
+  \caption{Theorems proved by Coq/Lean/Isabelle in chronological order. One point represents one month.}
   \label{historical commits}
 \end{figure}
 
@@ -234,7 +234,7 @@ We observed in Figure \ref{thms over time} that Lean, in the context of math for
 
 We see in Figure \ref{commits per year} that in the past five years Lean has significantly more commits to its main repositories than both Coq and Isabelle. Before that, Isabelle had a commanding lead, although its activity seems to have diminished with the emergence of Lean. The slight increase in Isabelle activity in 2012-2016 corresponds to a large growth in proven theorems in Figure \ref{thms over time} over the same time frame.
 
-Figure \ref{commits per year} also shows two outlier points for Coq: there are two points, occuring at August and September 2014, where the number of commits surpasses 300. Most of these commits were from one user and their solo project to prove Puiseux's Theorem, one of the theorems on the 100 Theorems list. Interestingly, none of the commit messages for these commits seem to have relevant information--the messages are simply \texttt{--}.
+Figure \ref{commits per year} also shows two outlier points for Coq: there are two points, occuring at August and September 2014, where the number of commits surpasses 300. Most of these commits were from one user and their solo project to prove Puiseux's Theorem, one of the theorems on the 100 Theorems list. Interestingly, none of the commit messages for these commits seem to have relevant information--the messages are simply "\texttt{--}".
 
 \begin{figure}[H]
   \includegraphics[scale=0.5]{rate.png}
