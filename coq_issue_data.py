@@ -29,17 +29,18 @@ for element in coq_issue_data:
         comments.append(element['discussion'])
 
 # Initialize a pandas DataFrame to store the language and year data
-lang_data = pd.DataFrame(columns=["language", "year", "count"])
+lang_data = pd.DataFrame(columns=["language", "year", "count", "length"])
 
 # Iterate over the comments and detect the language of each text
 for comment in comments:
     for item in comment:
+        if len(str(item['comment']).split()) >= 30:
             try:
                 print('.')
                 lang = detect(item['comment'])
                 date = pd.to_datetime(item["date"], format="%Y-%m-%dT%H:%M:%S%z")
                 year = date.year
-                lang_data = lang_data.append({"language": lang, "year": year, "count": 1}, ignore_index=True)
+                lang_data = lang_data.append({"language": lang, "year": year, "count": 1, "length" : len(str(item['comment']))}, ignore_index=True)
                 print(lang_data)
             except Exception as e:
                 #print(f"Failed to detect language for '{comment['date']}': {e}")
@@ -51,6 +52,9 @@ lang_count = lang_data.groupby(["language", "year"]).count().reset_index()
 year_count = lang_count.groupby("year")["count"].sum()
 # Compute the percentage of comments in each language to all comments of the year
 lang_count["percent"] = lang_count.apply(lambda x: x["count"] / year_count[x["year"]] * 100, axis=1)
+
+# Save the language data to a CSV file
+lang_count.to_csv("language_data.csv", index=False)
 
 # Create a plot with a line for each language
 fig, ax = plt.subplots()
