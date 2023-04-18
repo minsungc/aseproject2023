@@ -201,7 +201,26 @@ However, Figure \ref{thms over time} demonstrates that Lean is catching up fast.
 
 Figure \ref{number of commits} demonstrates that, although Coq has more theorems proven than Lean, per theorem it only has few commits. On the other hand, Isabelle seems to have many theorems with hundreds of commits to the source file. In general, we see little correlation between the different proof assistants and the number of commits to prove each theorem on the 100 Theorems list. 
 
-In general, the commit contents were mostly proofs of the theorem and related mathematics. We observed that often the theorems themselves are only consequences of an underlying theory, and not a standalone goal. This can be likened to mathematics, where usually theorems are consequences of studying an underlying theory and not a goal to build towards. Besides proofs, other commit contents included dependency updates, refactoring of code, and comments to explain the proofs in English. We leave it to future work for a more sophisticated analysis of commit contents via code differences.
+We see in Figure \ref{historical commits} that there is also little correlation between the different proof assistants and the order in which the theorems were proven. However, we see a common pattern in all three proof assistants: there are times when several theorems are proven in a very short span of time. We believe this is due to similarities in the definitions and proof techniques used in the theorems rather than pure coincedence.
+
+In general, the commit contents were mostly proofs of the theorem and related mathematics. We observed that often the theorems themselves are only consequences of an underlying theory, and not a standalone goal. This can be likened to mathematics, where usually theorems are consequences of studying an underlying theory and not a goal to build towards. We believe that this is also the reason why there is little correlation in the order in which theorems were proven. Besides proofs, other commit contents included dependency updates, refactoring of code, and comments to explain the proofs in English. We leave it to future work for a more sophisticated analysis of commit contents via code differences.
+
+\begin{figure}[H]
+  \begin{subfigure}{\columnwidth}
+    \includegraphics[width=\linewidth]{coq_theorems_timeline.png}
+    \caption{Coq theorem timeline.}
+  \end{subfigure}
+  \begin{subfigure}{\columnwidth}
+    \includegraphics[width=\linewidth]{lean_theorems_timeline.png}
+    \caption{Lean theorem timeline.}
+  \end{subfigure}
+  \begin{subfigure}{\columnwidth}
+    \includegraphics[width=\linewidth]{isabelle_theorems_timeline.png}
+    \caption{Isabelle theorem timeline.}
+  \end{subfigure}
+  \caption{Theorems proved by Coq/Lean/Isabelle in chronological order.}
+  \label{historical commits}
+\end{figure}
 
 \subsection{Results for research problem \ref{r2}}
 
@@ -226,24 +245,24 @@ Figure \ref{commits per year} also shows two outlier points for Coq: there are t
 Figure \ref{rate of growth}, which shows code growth by Equation \ref{eq1} per year, reaffirms similar conclusions to Figure \ref{commits per year}. However, we noticed that Isabelle does not have a standard system for pull requests and issues. Instead, any changes in its library must be done through a form submitted to TU Munich, where Isabelle development is centered at. As such, the following analysis of pull request and issue will be on Lean and Coq exclusively. 
 
 \begin{figure}[H]
-  \begin{subfigure}[b]{0.45\columnwidth}
+  \begin{subfigure}{0.45\columnwidth}
     \includegraphics[width=\linewidth]{coq_prs_sate.png}
     \caption{Coq pull requests.}
     \label{coq prs}
   \end{subfigure}
   \hfill %%
-  \begin{subfigure}[b]{0.45\columnwidth}
+  \begin{subfigure}{0.45\columnwidth}
     \includegraphics[width=\linewidth]{Lean_pull_requests_state.png}
     \caption{Lean pull requests.}
     \label{lean prs}
   \end{subfigure}
-  \begin{subfigure}[b]{0.45\columnwidth}
+  \begin{subfigure}{0.45\columnwidth}
     \includegraphics[width=\linewidth]{coq_isuses_state.png}
     \caption{Coq issues.}
     \label{coq issues}
   \end{subfigure}
   \hfill %%
-  \begin{subfigure}[b]{0.45\columnwidth}
+  \begin{subfigure}{0.45\columnwidth}
     \includegraphics[width=\linewidth]{lean_isuses_state.png}
     \caption{Lean issues}
     \label{lean prs}
@@ -254,14 +273,15 @@ Figure \ref{rate of growth}, which shows code growth by Equation \ref{eq1} per y
 
 Figure \ref{circles} demonstrates that how Coq and Lean handle issues is relatively similar by proportion. It is interesting to note that although Lean arguably has more stringent style and pull request guidelines than Coq, its proportion of merged pull requests is slightly more than Coq. Indeed, Figure \ref{bars} reinforces the conclusion that although Coq and Lean are different in many ways, they follow similar open source guidelines.
 
-\begin{figure}
-\begin{subfigure}[b]{0.8\columnwidth}
+
+\begin{figure}[H]
+\begin{subfigure}{0.8\columnwidth}
   \includegraphics[width=\linewidth]{coq_mergedvsall.png}
   \caption{Coq.}
   \label{fig:1}
 \end{subfigure}
 \hfill %%
-\begin{subfigure}[b]{0.8\columnwidth}
+\begin{subfigure}{0.8\columnwidth}
   \includegraphics[width=\linewidth]{lean_mergedvsall.png}
   \caption{Lean.}
   \label{fig:2}
